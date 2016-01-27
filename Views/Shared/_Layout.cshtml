@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+
+    <link rel="shortcut icon" href="assets/img/favicon.png" />
+
+    <meta name="description" content="">
+
+    <!-- CSS -->
+    <link href="../assets/css/preload.css" rel="stylesheet">
+
+    <!-- Compiled in vendors.js -->
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/bootstrap-switch.min.css" rel="stylesheet">
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../assets/css/animate.min.css" rel="stylesheet">
+    <link href="../assets/css/slidebars.min.css" rel="stylesheet">
+    <link href="../assets/css/lightbox.css" rel="stylesheet">
+    <link href="../assets/css/jquery.bxslider.css" rel="stylesheet" />
+    <link href="../assets/css/buttons.css" rel="stylesheet">
+
+
+    <link href="../assets/css/vendors.css" rel="stylesheet">
+    <link href="../assets/css/syntaxhighlighter/shCore.css" rel="stylesheet">
+
+    <link href="../assets/css/style-blue.css" rel="stylesheet" title="default">
+    <link href="../assets/css/width-full.css" rel="stylesheet" title="default">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="assets/js/html5shiv.min.js"></script>
+        <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+
+<body>
+
+
+    <div id="sb-site">
+        <div class="boxed">
+
+            <header id="header-full-top">
+
+
+
+                <nav class="navbar yamm navbar-static-top" role="navigation" id="header">
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="col-xs-pull-6">
+                                <p>Phone#: 704-458-7170 | Email: Ayang014@gmail.com</p>
+
+                            </div>
+
+                            <div class="col-md-6 pull-right">
+                                @Html.Partial("_LoginPartial")
+
+
+                            </div>
+                            <div class="col-md-6 pull-right">
+                                <nav class="top-nav">
+                                    <a href="https://www.linkedin.com/in/a-yang-4b547a77" class="animated fadeInUp animation-delay-7 btn-social sm solid linkedin"><i class="fa fa-linkedin"></i></a>
+                                    <a href="https://www.facebook.com/acer.yang.9" class="animated fadeInUp animation-delay-8 btn-social sm solid facebook"><i class="fa fa-facebook"></i></a>
+                                    <a href="https://www.instagram.com/acer_yang/" class="animated fadeInUp animation-delay-14 btn-social sm solid instagram"><i class="fa fa-instagram"></i></a>
+
+                                </nav>
+
+                            </div>
+                        </div> <!--End row-->
+                            
+                    </div> <!--End container-->
+                </nav>
+            </header>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><img src="../assets/img/peace.png" height="60" width="80" /><font size="15" color="#000">A Yang</font></p>
+
+                    </div>
+                    <div class="col-md-6">
+                        <nav class="navbar navbar-default navbar-header-full yamm navbar-static-top" role="navigation" id="header">
+                            <div class="container">
+
+
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    <ul class="nav navbar-nav">
+
+                                        <li><a href="http://ayang.azurewebsites.net">Home</a></li>
+                                        <li><a href="http://ayang.azurewebsites.net/about.html">About</a></li>
+                                        <li><a href="http://ayang.azurewebsites.net/resume.html">Resume</a></li>
+                                        <li class="active"><a href="#">Blog</a></li>
+                                        <li><a href="http://ayang.azurewebsites.net/portfolio.html">Portfolio</a></li>
+                                        <li><a href="http://ayang.azurewebsites.net/contact.html">Contact</a></li>
+
+                                    </ul>
+
+                                </div><!-- navbar-collapse -->
+                            </div><!-- container -->
+                        </nav>
+
+                    </div>
+
+                </div>
+            </div>
+
+           @RenderBody()
+        <!--render-->
+        </div> <!-- boxed -->
+        <footer id="footer">
+            <p>&copy; 2016 <a href="#">A Yang</a>, inc. All rights reserved.</p>
+        </footer>
+    </div> <!-- sb-site -->
+
+    
+
+   
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+
+
+    <!-- Scripts -->
+    <!-- Compiled in vendors.js -->
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/jquery.cookie.js"></script>
+    <script src="../assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-switch.min.js"></script>
+    <script src="../assets/js/wow.min.js"></script>
+    <script src="../assets/js/slidebars.min.js"></script>
+    <script src="../assets/js/jquery.bxslider.min.js"></script>
+    <script src="../assets/js/holder.js"></script>
+    <script src="../assets/js/buttons.js"></script>
+    <script src="../assets/js/jquery.mixitup.min.js"></script>
+    <script src="../assets/js/circles.min.js"></script>
+    <script src="../assets/js/masonry.pkgd.min.js"></script>
+    <script src="../assets/js/jquery.matchHeight-min.js"></script>
+
+
+    <script src="../assets/js/vendors.js"></script>
+
+    <!-- Syntaxhighlighter -->
+    <script src="../assets/js/syntaxhighlighter/shCore.js"></script>
+    <script src="../assets/js/syntaxhighlighter/shBrushXml.js"></script>
+    <script src="../assets/js/syntaxhighlighter/shBrushJScript.js"></script>
+
+    <script src="../assets/js/DropdownHover.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/holder.js"></script>
+
+</body>
+
+</html>
+
+
+
+
+
+@*<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - My ASP.NET Application</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
+    </html>*@
