@@ -62,7 +62,7 @@ namespace BlogTest.Controllers
         }
 
         // GET: Posts/Edit/5
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Moderator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -82,7 +82,7 @@ namespace BlogTest.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Moderator")]
         public ActionResult Edit([Bind(Include = "Id,CreationDate,UpdateDate,title,BodyText,MediaUrl,Published,CategoryId")] Post post)
         {
             if (ModelState.IsValid)
@@ -95,7 +95,7 @@ namespace BlogTest.Controllers
         }
 
         // GET: Posts/Delete/5
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Moderator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -113,7 +113,7 @@ namespace BlogTest.Controllers
         // POST: Posts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Moderator")]
         public ActionResult DeleteConfirmed(int id)
         {
             Post post = db.Posts.Find(id);
