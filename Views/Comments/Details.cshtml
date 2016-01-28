@@ -1,10 +1,13 @@
 ﻿@model BlogTest.Models.Comment
-
+<div class="container">
 @{
     ViewBag.Title = "Details";
 }
 
 <h2>Details</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 
 <div>
     <h4>Comment</h4>
@@ -35,11 +38,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Post.title)
+            @Html.DisplayNameFor(model => model.Post.Title)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Post.title)
+            @Html.DisplayFor(model => model.Post.Title)
         </dd>
 
         <dt>
@@ -75,8 +78,15 @@
         </dd>
 
     </dl>
+
 </div>
+}
+    </div><!--end container-->
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

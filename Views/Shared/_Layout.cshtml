@@ -9,30 +9,30 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
 
-    <link rel="shortcut icon" href="assets/img/favicon.png" />
+    <link rel="shortcut icon" href="~/assets/img/favicon.png" />
 
     <meta name="description" content="">
 
     <!-- CSS -->
-    <link href="../assets/css/preload.css" rel="stylesheet">
+    <link href="~/assets/css/preload.css" rel="stylesheet">
 
     <!-- Compiled in vendors.js -->
 
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../assets/css/bootstrap-switch.min.css" rel="stylesheet">
-    <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
-    <link href="../assets/css/animate.min.css" rel="stylesheet">
-    <link href="../assets/css/slidebars.min.css" rel="stylesheet">
-    <link href="../assets/css/lightbox.css" rel="stylesheet">
-    <link href="../assets/css/jquery.bxslider.css" rel="stylesheet" />
-    <link href="../assets/css/buttons.css" rel="stylesheet">
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/css/bootstrap-switch.min.css" rel="stylesheet">
+    <link href="~/assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/assets/css/animate.min.css" rel="stylesheet">
+    <link href="~/assets/css/slidebars.min.css" rel="stylesheet">
+    <link href="~/assets/css/lightbox.css" rel="stylesheet">
+    <link href="~/assets/css/jquery.bxslider.css" rel="stylesheet" />
+    <link href="~/assets/css/buttons.css" rel="stylesheet">
 
 
-    <link href="../assets/css/vendors.css" rel="stylesheet">
-    <link href="../assets/css/syntaxhighlighter/shCore.css" rel="stylesheet">
+    <link href="~/assets/css/vendors.css" rel="stylesheet">
+    <link href="~/assets/css/syntaxhighlighter/shCore.css" rel="stylesheet">
 
-    <link href="../assets/css/style-blue.css" rel="stylesheet" title="default">
-    <link href="../assets/css/width-full.css" rel="stylesheet" title="default">
+    <link href="~/assets/css/style-blue.css" rel="stylesheet" title="default">
+    <link href="~/assets/css/width-full.css" rel="stylesheet" title="default">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -64,7 +64,7 @@
                             <div class="col-md-6 pull-right">
                                 @Html.Partial("_LoginPartial")
 
-
+                                <!--comments-->
                             </div>
                             <div class="col-md-6 pull-right">
                                 <nav class="top-nav">
@@ -84,7 +84,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <p><img src="../assets/img/peace.png" height="60" width="80" /><font size="15" color="#000">A Yang</font></p>
+                        <p><img src="~/assets/img/peace.png" height="60" width="80" /><font size="15" color="#000">A Yang</font></p>
 
                     </div>
                     <div class="col-md-6">
@@ -98,7 +98,7 @@
                                         <li><a href="http://ayang.azurewebsites.net">Home</a></li>
                                         <li><a href="http://ayang.azurewebsites.net/about.html">About</a></li>
                                         <li><a href="http://ayang.azurewebsites.net/resume.html">Resume</a></li>
-                                        <li class="active"><a href="#">Blog</a></li>
+                                        <li class="active"><a href="/Posts/Index">Blog</a></li>
                                         <li><a href="http://ayang.azurewebsites.net/portfolio.html">Portfolio</a></li>
                                         <li><a href="http://ayang.azurewebsites.net/contact.html">Contact</a></li>
 
@@ -134,32 +134,32 @@
     <!-- Scripts -->
     <!-- Compiled in vendors.js -->
 
-    <script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/js/jquery.cookie.js"></script>
-    <script src="../assets/js/imagesloaded.pkgd.min.js"></script>
-    <script src="../assets/js/bootstrap.min.js"></script>
-    <script src="../assets/js/bootstrap-switch.min.js"></script>
-    <script src="../assets/js/wow.min.js"></script>
-    <script src="../assets/js/slidebars.min.js"></script>
-    <script src="../assets/js/jquery.bxslider.min.js"></script>
-    <script src="../assets/js/holder.js"></script>
-    <script src="../assets/js/buttons.js"></script>
-    <script src="../assets/js/jquery.mixitup.min.js"></script>
-    <script src="../assets/js/circles.min.js"></script>
-    <script src="../assets/js/masonry.pkgd.min.js"></script>
-    <script src="../assets/js/jquery.matchHeight-min.js"></script>
+    <script src="~/assets/js/jquery.min.js"></script>
+    <script src="~/assets/js/jquery.cookie.js"></script>
+    <script src="~/assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/bootstrap-switch.min.js"></script>
+    <script src="~/assets/js/wow.min.js"></script>
+    <script src="~/assets/js/slidebars.min.js"></script>
+    <script src="~/assets/js/jquery.bxslider.min.js"></script>
+    <script src="~/assets/js/holder.js"></script>
+    <script src="~/assets/js/buttons.js"></script>
+    <script src="~/assets/js/jquery.mixitup.min.js"></script>
+    <script src="~/assets/js/circles.min.js"></script>
+    <script src="~/assets/js/masonry.pkgd.min.js"></script>
+    <script src="~/assets/js/jquery.matchHeight-min.js"></script>
 
 
-    <script src="../assets/js/vendors.js"></script>
+    <script src="~/assets/js/vendors.js"></script>
 
     <!-- Syntaxhighlighter -->
-    <script src="../assets/js/syntaxhighlighter/shCore.js"></script>
-    <script src="../assets/js/syntaxhighlighter/shBrushXml.js"></script>
-    <script src="../assets/js/syntaxhighlighter/shBrushJScript.js"></script>
+    <script src="~/assets/js/syntaxhighlighter/shCore.js"></script>
+    <script src="~/assets/js/syntaxhighlighter/shBrushXml.js"></script>
+    <script src="~/assets/js/syntaxhighlighter/shBrushJScript.js"></script>
 
-    <script src="../assets/js/DropdownHover.js"></script>
-    <script src="../assets/js/app.js"></script>
-    <script src="../assets/js/holder.js"></script>
+    <script src="~/assets/js/DropdownHover.js"></script>
+    <script src="~/assets/js/app.js"></script>
+    <script src="~/assets/js/holder.js"></script>
 
 </body>
 
