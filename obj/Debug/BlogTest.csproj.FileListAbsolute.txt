@@ -66,4 +66,3 @@ C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\Micro
 C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\obj\Debug\BlogTest.dll
 C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\obj\Debug\BlogTest.pdb
-C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\obj\Debug\BlogTest.csprojResolveAssemblyReference.cache
