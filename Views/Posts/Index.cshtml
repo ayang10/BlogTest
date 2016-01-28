@@ -2,7 +2,6 @@
 
 @{
     ViewBag.Title = "Index";
-
 }
 
 <div class="container">
@@ -17,15 +16,9 @@
 
 @if (User.IsInRole("Admin"))
 {
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <p>
-                    @Html.ActionLink("Create New", "Create")
-                </p>
-            </div>
-        </div>
-    </div>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 }
 
 <div class="container">
@@ -33,59 +26,40 @@
     {
 
 
-        <div class="row">
-            <div class="col-xs-12">
-                <article class="post animated fadeInDown animation-delay-6">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <h3 class="post-title">
-                                <a href="Posts/Details.cshtml" class="transicion">@post.Title</a>
-                            </h3>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <img src="../assets/img/demo/img_full.jpg" class="img-responsive imageborder" alt="Image">
-                                </div>
-                                <div class="col-md-6">
-                                    <p>@post.BodyText</p>
-                                </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <article class="post animated fadeInDown animation-delay-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3 class="post-title"><a href="single.html" class="transicion">@post.Title</a></h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="../assets/img/demo/img_full.jpg" class="img-responsive imageborder" alt="Image">
+                            </div>
+                            <div class="col-md-6">
+                                <p>@post.BodyText</p>
                             </div>
                         </div>
-                        <div class="panel-footer">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <i class="fa fa-clock-o"></i>@post.CreationDate
-                                    <i class="fa fa-user"> </i> A Yang
-                                    <i class="fa fa-folder-open"></i>.
-                                </div>
-                                <div class="col-lg-2">
-                                    @if (User.IsInRole("Admin"))
-                                    {
-                                        <p>
-                                            @Html.ActionLink("Delete Post", "Delete", new { @post.Id})
-                                        </p>
-                                    }
-                                </div>
-                                <div class="col-lg-2">
-                                    @if (User.IsInRole("Admin"))
-                                    {
-                                        <p>
-                                            @Html.ActionLink("Edit", "Edit", new { @post.Id })
-                                        </p>
-                                    }
-                                </div>
-                                <div class="col-lg-2">
-                                    <p>@Html.ActionLink("Detail", "Details", new { @post.Id})</p>
-                                </div>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="row">
+                            <div class="col-lg-10 col-md-9 col-sm-4">
+                                <i class="fa fa-clock-o"></i>@post.CreationDate <i class="fa fa-user"> </i> A Yang <i class="fa fa-folder-open"></i>.
+                            </div>
+                            <div class="col-lg-2 col-md-3 col-sm-4">
+                                <a href="#" class="pull-right">Read more &raquo;</a>
+                            </div>
                         </div>
                     </div>
-                </article> <!-- post -->
+                </div>
+            </article> <!-- post -->
+            
 
+            
+        </div> <!-- col-md-8 -->
 
-
-            </div> <!-- col-md-8 -->
-
-        </div> <!-- row -->
+    </div> <!-- row -->
     }
-
+    
 
 </div> <!-- container  -->

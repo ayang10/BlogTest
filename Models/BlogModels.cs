@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
 
 namespace BlogTest.Models
 {
@@ -17,7 +16,6 @@ namespace BlogTest.Models
         public DateTimeOffset CreationDate { get; set; }
         public DateTimeOffset? UpdateDate { get; set; }
         public string Title { get; set; }
-        [AllowHtml]
         public string BodyText { get; set; }
         public string MediaUrl { get; set; }
         public bool Published { get; set; }
