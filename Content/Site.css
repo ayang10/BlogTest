@@ -16,11 +16,11 @@
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
+intput,
 select,
-textarea {
-    max-width:100%; 
-    resize: none;
+
+textarea{
+    width: 280px;
 }
+
 

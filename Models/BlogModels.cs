@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace BlogTest.Models
 {
@@ -16,7 +18,11 @@ namespace BlogTest.Models
         public DateTimeOffset CreationDate { get; set; }
         public DateTimeOffset? UpdateDate { get; set; }
         public string Title { get; set; }
+
+
+        [UIHint("tinymce_jquery_full"), AllowHtml]
         public string BodyText { get; set; }
+
         public string MediaUrl { get; set; }
         public bool Published { get; set; }
         public int CategoryId { get; set; }
@@ -51,6 +57,7 @@ namespace BlogTest.Models
         public int PostId { get; set; }
         public string AuthorId { get; set; } //author
         public string EditorId { get; set; }//editior 
+        [UIHint("tinymce_jquery_full"), AllowHtml]
         public string Body { get; set; }
         public DateTimeOffset Created { get; set; }
         public DateTimeOffset? Updated { get; set; }

@@ -1,4 +1,5 @@
 ﻿@model BlogTest.Models.Post
+
 <div class="container">
     @{
         ViewBag.Title = "Create";
@@ -27,7 +28,9 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.BodyText, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.TextAreaFor(model => model.BodyText, new { htmlAttributes = new { @class = "form-control" } })
+
+                    
+                    @Html.EditorFor(model => model.BodyText, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.BodyText, "", new { @class = "text-danger" })
                 </div>
             </div>

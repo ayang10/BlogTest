@@ -7,7 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <title>@ViewBag.Title - My ASP.NET Application</title>
+   
     @Styles.Render("~/Content/css")
+    @Scripts.Render("~bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script src="~/Scripts/tinymce/tinymce.js"></script>
+    <script src="~/Scripts/tinymce/tinymce.min.js"></script>
 
     <link rel="shortcut icon" href="~/assets/img/favicon.png" />
 
@@ -115,6 +123,12 @@
 
            @RenderBody()
         <!--render-->
+
+            @Scripts.Render("//tinymce.cachefly.net/4.0/tinymce.min.js")
+            <script>
+                tinymce.init({ selector: 'textarea' });
+            </script>
+
         </div> <!-- boxed -->
         <footer id="footer">
             <p>&copy; 2016 <a href="#">A Yang</a>, inc. All rights reserved.</p>
@@ -125,9 +139,7 @@
 
    
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+   
 
 
 
