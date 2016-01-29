@@ -14,6 +14,9 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
+
+    <script src="~/Scripts/jQuery.dotdotdot-master/src/js/jquery.dotdotdot.js"></script>
+
     <script src="~/Scripts/tinymce/tinymce.js"></script>
     <script src="~/Scripts/tinymce/tinymce.min.js"></script>
 
@@ -124,22 +127,17 @@
            @RenderBody()
         <!--render-->
 
-            @Scripts.Render("//tinymce.cachefly.net/4.0/tinymce.min.js")
-            <script>
-                tinymce.init({ selector: 'textarea' });
-            </script>
-
         </div> <!-- boxed -->
         <footer id="footer">
             <p>&copy; 2016 <a href="#">A Yang</a>, inc. All rights reserved.</p>
         </footer>
     </div> <!-- sb-site -->
 
-    
 
-   
 
-   
+
+
+
 
 
 

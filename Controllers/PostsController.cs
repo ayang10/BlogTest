@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BlogTest.Models;
+using System.IO;
 
 namespace BlogTest.Controllers
 {
@@ -48,10 +49,20 @@ namespace BlogTest.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Create([Bind(Include = "title,BodyText,MediaUrl,Published,CategoryId")] Post post) 
+        public ActionResult Create( Post post, HttpPostedFileBase fileUpload) 
         {
+            post.CreationDate = new DateTimeOffset(DateTime.Now);
             if (ModelState.IsValid)
             {
+                // restricting the valid file formats to images only
+                if (Post.ImageUploadValidator.IsWebFriendlyImage(fileUpload))
+                {
+                    var fileName = System.IO.Path.GetFileName(fileUpload.FileName);
+                    fileUpload.SaveAs(Path.Combine(Server.MapPath("~/img/"), fileName));
+                    post.MediaUrl = "/img/" + fileName;
+
+                }
+
                 post.CreationDate = new DateTimeOffset(DateTime.Now);
                 db.Posts.Add(post); //add the object
                 db.SaveChanges(); //creates a sql statement and sends it out
@@ -83,10 +94,19 @@ namespace BlogTest.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Edit([Bind(Include = "Id,CreationDate,UpdateDate,title,BodyText,MediaUrl,Published,CategoryId")] Post post)
+        public ActionResult Edit([Bind(Include = "Id,CreationDate,UpdateDate,title,BodyText,MediaUrl,Published,CategoryId")] Post post, HttpPostedFileBase fileUpload)
         {
+            post.CreationDate = new DateTimeOffset(DateTime.Now);
+            // restricting the valid file formats to images only
+            if (Post.ImageUploadValidator.IsWebFriendlyImage(fileUpload))
+            {
+                var fileName = Path.GetFileName(fileUpload.FileName);
+                fileUpload.SaveAs(Path.Combine(Server.MapPath("~/img"), fileName));
+                post.MediaUrl = "~/img" + fileName;
+            }
             if (ModelState.IsValid)
             {
+                post.CreationDate = new DateTimeOffset(DateTime.Now);
                 db.Entry(post).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

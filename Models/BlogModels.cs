@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
 namespace BlogTest.Models
 {
+
+
     public class Post
     {
+        private int BodyTextLimit = 300;
+
         public Post()
         {
             this.Comments = new HashSet<Comment>();
@@ -20,16 +26,64 @@ namespace BlogTest.Models
         public string Title { get; set; }
 
 
-        [UIHint("tinymce_jquery_full"), AllowHtml]
+        [AllowHtml]
         public string BodyText { get; set; }
 
         public string MediaUrl { get; set; }
+
         public bool Published { get; set; }
         public int CategoryId { get; set; }
 
         //joined table //add virtual for lazy loading
         public virtual ICollection<Category> Categories { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
+
+
+        public string BodyTextTrimmed
+        {
+            get
+            {
+                if (this.BodyText.Length > this.BodyTextLimit)
+                    return this.BodyText.Substring(0, this.BodyTextLimit) + "...";
+                else
+                    return this.BodyText;
+            }
+        }
+
+
+        public static class ImageUploadValidator
+        {
+            public static bool IsWebFriendlyImage(HttpPostedFileBase file)
+            {
+                //check for actual object
+                if (file == null)
+                    return false;
+
+                //check size - file must be  less than 2 MB and greater than 1 KB
+                if (file.ContentLength > 2 * 1024 * 1024)
+                    return false;
+
+                try
+                {
+                    using (var img = Image.FromStream(file.InputStream))
+                    {
+                        return ImageFormat.Jpeg.Equals(img.RawFormat) ||
+                               ImageFormat.Png.Equals(img.RawFormat) ||
+                               ImageFormat.Gif.Equals(img.RawFormat);
+                    }
+                }
+                
+                catch
+                {
+
+                    return false;
+                }
+            }
+    }
+        
+
+
+
     }
 
     public class Category
@@ -57,7 +111,7 @@ namespace BlogTest.Models
         public int PostId { get; set; }
         public string AuthorId { get; set; } //author
         public string EditorId { get; set; }//editior 
-        [UIHint("tinymce_jquery_full"), AllowHtml]
+        [AllowHtml]
         public string Body { get; set; }
         public DateTimeOffset Created { get; set; }
         public DateTimeOffset? Updated { get; set; }
@@ -73,7 +127,12 @@ namespace BlogTest.Models
         public virtual ICollection<Comment> Comments { get; set; }
     }
 
-   
+
+    
+
+
+
+
 }
 
     

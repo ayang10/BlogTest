@@ -2720,7 +2720,7 @@ textarea.form-control:focus {
 }
 .panel-primary .panel-heading,
 .panel-primary .panel-footer {
-  background-color: #0099da;
+  background-color: #555;
   color: #fff;
 }
 .panel-heading {
