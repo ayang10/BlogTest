@@ -21,7 +21,7 @@ input,
 select,
 
 textarea{
-    max-width: 100%;
+    max-width: 50%;
     max-height: 100%;
 }
 

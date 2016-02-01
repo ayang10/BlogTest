@@ -40,7 +40,9 @@ C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\Syste
 C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\System.Web.WebPages.dll
 C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\System.Web.WebPages.Razor.dll
 C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\WebGrease.dll
+C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\Antlr3.Runtime.pdb
 C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\Newtonsoft.Json.xml
 C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\System.Web.Helpers.xml
 C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\System.Web.Mvc.xml
 C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\System.Web.Optimization.xml
@@ -48,8 +50,6 @@ C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\Syste
 C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\System.Web.WebPages.xml
 C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\System.Web.WebPages.Deployment.xml
 C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\System.Web.WebPages.Razor.xml
-C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\Antlr3.Runtime.pdb
-C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\Newtonsoft.Json.xml
 C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\EntityFramework.xml
 C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\EntityFramework.SqlServer.xml
 C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\Microsoft.AspNet.Identity.Core.xml
@@ -66,3 +66,4 @@ C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\Micro
 C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\obj\Debug\BlogTest.dll
 C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\obj\Debug\BlogTest.pdb
+C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\obj\Debug\BlogTest.csprojResolveAssemblyReference.cache

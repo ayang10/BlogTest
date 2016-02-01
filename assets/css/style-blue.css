@@ -2707,7 +2707,7 @@ textarea.form-control:focus {
 }
 .panel,
 .panel .panel-footer {
-  border-radius: 0;
+  border: 10px #0099da;
 }
 .panel-default {
   border-color: #e5e5e5;
@@ -4680,9 +4680,17 @@ input.input-lg[type="text"] {
 }
 .post-title {
   font-size: 1.6em;
+  
   margin: 0 0 20px 0;
   padding-bottom: 10px;
-  border-bottom: solid 1px #eee;
+  border-bottom: solid 2px #000;
+}
+.post-title-size {
+    color: #0b3568;
+    font-family: "Muli", "Lato", sans-serif;
+    font-size: 2.4em;
+    margin: 0 0 20px 0;
+    border-bottom: solid 2px #000;
 }
 .post .post-title a {
   color: #0099da;
@@ -7490,3 +7498,7 @@ Image placeholders: placemi.com
 }
 
 /*# sourceMappingURL=style-blue.css.map */
+
+.changecolor{
+    color: #0d509a
+}

@@ -14,7 +14,6 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
-
     <script src="~/Scripts/jQuery.dotdotdot-master/src/js/jquery.dotdotdot.js"></script>
 
     <script src="~/Scripts/tinymce/tinymce.js"></script>
@@ -129,7 +128,7 @@
 
         </div> <!-- boxed -->
         <footer id="footer">
-            <p>&copy; 2016 <a href="#">A Yang</a>, inc. All rights reserved.</p>
+            <p>&copy; @DateTime.Now.Year<a href="#"> A Yang</a>, inc. All rights reserved.</p>
         </footer>
     </div> <!-- sb-site -->
 
@@ -143,6 +142,8 @@
 
     <!-- Scripts -->
     <!-- Compiled in vendors.js -->
+    
+
 
     <script src="~/assets/js/jquery.min.js"></script>
     <script src="~/assets/js/jquery.cookie.js"></script>

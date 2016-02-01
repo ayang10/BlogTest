@@ -57,6 +57,7 @@ namespace BlogTest.Controllers
         {
             if (ModelState.IsValid)
             {
+                comment.Created = new DateTimeOffset(DateTime.Now);
                 db.Comments.Add(comment);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -65,7 +66,7 @@ namespace BlogTest.Controllers
             ViewBag.AuthorId = new SelectList(db.Users, "Id", "FirstName", comment.AuthorId);
             ViewBag.EditorId = new SelectList(db.Users, "Id", "FirstName", comment.EditorId);
             ViewBag.ParentCommentId = new SelectList(db.Comments, "Id", "AuthorId", comment.ParentCommentId);
-            ViewBag.PostId = new SelectList(db.Posts, "Id", "title", comment.PostId);
+            ViewBag.PostId = new SelectList(db.Posts, "Id", "Title", comment.PostId);
             return View(comment);
         }
 
@@ -90,6 +91,7 @@ namespace BlogTest.Controllers
             ViewBag.EditorId = new SelectList(db.Users, "Id", "FirstName", comment.EditorId);
             ViewBag.ParentCommentId = new SelectList(db.Comments, "Id", "AuthorId", comment.ParentCommentId);
             ViewBag.PostId = new SelectList(db.Posts, "Id", "title", comment.PostId);
+            
             return View(comment);
         }
 

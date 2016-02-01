@@ -10,8 +10,7 @@
         </li>
         <li class="active">Blog Item Full</li>
     </ol>
-    <h4>Post</h4>
-    <hr />
+
 </div>
 
 
@@ -19,9 +18,11 @@
     <div class="row">
         <div class="col-md-12">
             <section>
-                <h2 class="page-header no-margin-top"><b>@Html.DisplayFor(model => model.Title)</b></h2>
-               
-                    
+                <h2 class="page-header no-margin-top">
+                    <b>@Html.DisplayFor(model => model.Title)</b>
+                </h2>
+
+
                 @if (Model.MediaUrl != null)
                 {
                     <center><img src="@Url.Content(Model.MediaUrl)" class="img-thumbnail" alt="Cinque Terre" width="1000" height="800" /></center>
@@ -40,8 +41,24 @@
                 </div>
             </section>
 
-
+       
             <h2 class="page-header no-margin-top">Comment @Html.DisplayFor(model => model.Comments)</h2>
+
+            @foreach (var comment in Model.Comments)
+            {
+
+                <div class="form-group">
+               
+                    @Html.ActionLink("Be the first to comment", "Create", new { @comment.Id })
+                
+
+
+            </div>
+            }
+            <br />
+
+            
+
 
         </div> <!--end col-md-12-->
     </div><!--end row-->

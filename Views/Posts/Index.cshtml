@@ -1,20 +1,24 @@
 ﻿@model IEnumerable<BlogTest.Models.Post>
-
+    
 @{
     ViewBag.Title = "Index";
-
+   
 }
 
 <br />
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1 class="page-header no-margin-top">
-                BLOG
-            </h1>
+            <center>
+                <img src="~/assets/img/blog.png" alt="" width="500" height="200" />
+            </center>
         </div>
+
     </div>
 </div>
+
+
+
 
 @if (User.IsInRole("Admin"))
 {
@@ -25,69 +29,203 @@
                     @Html.ActionLink("Create New", "Create")
                 </p>
             </div>
+            <div class="col-md-9">
+                <ol class="breadcrumb pull-right">
+                    <li>
+                        <a href="#">Blog</a>
+                    </li>
+                    <li class="active">Blog Item Full</li>
+                </ol>
+
+            </div>
         </div>
     </div>
 }
 
 
 <div class="container">
-@foreach (var post in Model)
-{
-    <div class="row">
-        <div class="col-xs-12">
-            <article class="post animated fadeInDown animation-delay-6">
-                <div class="panel panel-primary">
-                    <div class="panel-body">
-                        <h3 class="post-title">@post.Title</h3>
-                        <div class="row">
-                            <div class="col-md-6">
 
-                                @if (post.MediaUrl != null)
-                                {
-                                   <img src="@Url.Content(post.MediaUrl)" class="img-thumbnail" alt="Cinque Terre" width="500" height="300" />
-                                }
+    <div class="row">
+        <div class="col-md-8">
+
+            <article class="post animated fadeInDown animation-delay-6">
+                @foreach (var post in Model)
+                {
+                    <div class="panel panel-primary">
+                        <div class="panel-body">
+                            <h1 class="post-title-size">@post.Title</h1>
+                            <div class="row">
+                                <div class="col-md-6">
+
+                                    @if (post.MediaUrl != null)
+                                    {
+                                        <img src="@Url.Content(post.MediaUrl)" class="img-thumbnail" alt="Cinque Terre" width="500" height="300" />
+                                    }
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.Raw(post.BodyTextTrimmed)
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                @Html.Raw(post.BodyTextTrimmed)
+                        </div>
+                        <div class="panel-footer">
+                            <div class="row">
+                                <div class="col-lg-10 col-md-9 col-sm-4">
+                                    <i class="fa fa-clock-o"></i> 
+
+                                    @post.CreationDate
+
+                                    <i class="fa fa-user"> </i>A Yang
+                                    <i class="fa fa-folder-open"></i>
+                                    <a href="#">@post.CategoryId</a>
+                                </div>
+                                <div class="col-lg-2 col-md-3 col-sm-4">
+                                    <a href="#" class="pull-right">@Html.ActionLink("Read more", "Details", new { @post.Id }) &raquo;</a>
+                                </div>
+                                <div class="col-lg-2">
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <p>
+                                            @Html.ActionLink("Delete Post", "Delete", new { @post.Id })
+                                        </p>
+                                    }
+                                </div>
+                                <div class="col-lg-2">
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <p>
+                                            @Html.ActionLink("Edit", "Edit", new { @post.Id })
+                                        </p>
+                                    }
+                                </div>
+
                             </div>
                         </div>
                     </div>
-                    <div class="panel-footer">
-                        <div class="row">
-                            <div class="col-lg-10 col-md-9 col-sm-4">
-                                <i class="fa fa-clock-o"></i> @post.CreationDate
-                                <i class="fa fa-user"> </i> <a href="#">A Yang</a> 
-                                <i class="fa fa-folder-open"></i> <a href="#">Portfolio</a>, <a href="#">Design</a>.
-                            </div>
-                            <div class="col-lg-2 col-md-3 col-sm-4">
-                                <a href="#" class="pull-right">@Html.ActionLink("Read more", "Details", new { @post.Id }) &raquo;</a>
-                            </div>
-                            <div class="col-lg-2">
-                                @if (User.IsInRole("Admin"))
-                                {
-                                    <p>
-                                        @Html.ActionLink("Delete Post", "Delete", new { @post.Id })
-                                    </p>
-                                }
-                            </div>
-                            <div class="col-lg-2">
-                                @if (User.IsInRole("Admin"))
-                                {
-                                    <p>
-                                        @Html.ActionLink("Edit", "Edit", new { @post.Id })
-                                    </p>
-                                }
-                            </div>
-                            
+                }
+            </article> <!-- post -->
+        
+        </div><!--close col-md-8-->
+        <div class="col-md-4">
+            <aside class="sidebar">
+                <div class="block animated fadeInDown animation-delay-12">
+                    <div class="input-group">
+                        <input type="text" placeholder="Search..." class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-ar btn-primary" type="button"><i class="fa fa-search no-margin-right"></i></button>
+                        </span>
+                    </div><!-- /input-group -->
+                </div>
+
+                <div class="block animated fadeInDown animation-delay-10">
+                    <ul class="nav nav-tabs nav-tabs-ar" id="myTab2">
+                       
+                        <li class="active">
+                            <a href="#categories" data-toggle="tab"><i class="fa fa-folder-open"></i></a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        
+                        <div class="tab-pane active" id="categories">
+                            <h3 class="post-title no-margin-top">Categories</h3>
+                            <ul class="simple">
+                                <li>
+                                    <a href="#">Game Programming</a>
+                                </li>
+                                <li>
+                                    <a href="#">Artificial Intelligence</a>
+                                    <ul>
+                                        <li>
+                                            <a href="#">Artificial Life</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Neural Networks</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Resources</a>
+                                </li>
+                                <li>
+                                    <a href="#">Web Developer</a>
+                                </li>
+                            </ul>
                         </div>
+
+
+                    </div> <!-- tab-content -->
+                </div>
+
+                <div class="panel panel-primary animated fadeInDown animation-delay-8">
+                    <div class="panel-heading">
+                        <i class="fa fa-play-circle"></i>Featured video
+                    </div>
+                    <div class="video">
+                        <iframe src="http://player.vimeo.com/video/21081887?title=0&amp;byline=0&amp;portrait=0"></iframe>
+
                     </div>
                 </div>
-            </article> <!-- post -->
 
-            </div><!--close col-xs-12-->
-        </div><!--end row-->
-}
-    </div><!--end container-->
+                <div class="panel panel-primary animated fadeInDown animation-delay-6">
+                    <div class="panel-heading">
+                        <i class="fa fa-comments"></i> Recent Comments
+                    </div>
+                    <div class="panel-body">
+                        <ul class="comments-sidebar">
+                            <li>
+                                <img src="assets/img/demo/client.jpg" class="img-responsive" alt="Image">
+                                <h4>
+                                    <a href="#">Andrew</a> in
+                                    <a href="#">Lorem ipsum Fugiat elit occaecat aute nisi</a>
+                                </h4>
+                                <p>Lorem ipsum Occaecat ut esse amet ut eiusmod laborum cillum voluptate do laboris dolor ut elit aliquip velit ut nulla anim ...</p>
+                            </li>
+                            <li>
+                                <img src="assets/img/demo/client2.jpg" class="img-responsive" alt="Image">
+                                <h4>
+                                    <a href="#">Andrew</a> in
+                                    <a href="#">Lorem ipsum Fugiat elit occaecat aute nisi</a>
+                                </h4>
+                                <p>Lorem ipsum Occaecat ut esse amet ut eiusmod laborum cillum voluptate do laboris dolor ut elit aliquip velit ut nulla anim ...</p>
+                            </li>
+                            <li>
+                                <img src="assets/img/demo/client6.jpg" class="img-responsive" alt="Image">
+                                <h4>
+                                    <a href="#">Andrew</a> in
+                                    <a href="#">Lorem ipsum Fugiat elit occaecat aute nisi</a>
+                                </h4>
+                                <p>Lorem ipsum Occaecat ut esse amet ut eiusmod laborum cillum voluptate do laboris dolor ut elit aliquip velit ut nulla anim ...</p>
+                            </li>
+                            <li>
+                                <img src="assets/img/demo/client4.jpg" class="img-responsive" alt="Image">
+                                <h4>
+                                    <a href="#">Andrew</a> in
+                                    <a href="#">Lorem ipsum Fugiat elit occaecat aute nisi</a>
+                                </h4>
+                                <p>Lorem ipsum Occaecat ut esse amet ut eiusmod laborum cillum voluptate do laboris dolor ut elit aliquip velit ut nulla anim ...</p>
+                            </li>
+                            <li>
+                                <img src="assets/img/demo/client5.jpg" class="img-responsive" alt="Image">
+                                <h4>
+                                    <a href="#">Andrew</a> in
+                                    <a href="#">Lorem ipsum Fugiat elit occaecat aute nisi</a>
+                                </h4>
+                                <p>Lorem ipsum Occaecat ut esse amet ut eiusmod laborum cillum voluptate do laboris dolor ut elit aliquip velit ut nulla anim ...</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
+
+            </aside> <!-- Sidebar -->
+        </div>
+
+
+
+    </div><!--end row-->
+
+
+
+
+</div><!--end container-->
 
 
