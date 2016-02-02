@@ -24,6 +24,7 @@ namespace BlogTest.Controllers
         // GET: Posts/Details/5
         public ActionResult Details(int? id)
         {
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -57,9 +58,9 @@ namespace BlogTest.Controllers
                 // restricting the valid file formats to images only
                 if (Post.ImageUploadValidator.IsWebFriendlyImage(fileUpload))
                 {
-                    var fileName = System.IO.Path.GetFileName(fileUpload.FileName);
+                    var fileName = Path.GetFileName(fileUpload.FileName);
                     fileUpload.SaveAs(Path.Combine(Server.MapPath("~/img/"), fileName));
-                    post.MediaUrl = "/img/" + fileName;
+                    post.MediaUrl = "~/img/" + fileName;
 
                 }
                 
@@ -77,10 +78,12 @@ namespace BlogTest.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+           
             Post post = db.Posts.Find(id);
             if (post == null)
             {
@@ -95,47 +98,40 @@ namespace BlogTest.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Edit([Bind(Include = "Id,UpdateDate,Title,BodyText,MediaUrl,Published,CategoryId")] Post post, HttpPostedFileBase fileUpload)
+        public ActionResult Edit(Post post, HttpPostedFileBase fileUpload)
         {
 
             post.UpdateDate = new DateTimeOffset(DateTime.Now);
             
-            var fetched = db.Posts.Find(post.Id);
-            fetched.Title = post.Title;
-            fetched.BodyText = post.BodyText;
-            fetched.MediaUrl = post.MediaUrl;
-            fetched.Published = post.Published;
-            fetched.Categories = post.Categories;
-            fetched.UpdateDate = post.UpdateDate;
-
+            
+            // restricting the valid file formats to images only
             if (Post.ImageUploadValidator.IsWebFriendlyImage(fileUpload))
             {
-                string oldfilePath = fetched.MediaUrl;
-                if(fileUpload !=null && fileUpload.ContentLength > 0)
-                {
-                    var somefile = Path.GetFileName(fileUpload.FileName);
-                    string path = System.IO.Path.Combine(
-                        Server.MapPath("~/img/"), somefile);
-                    fileUpload.SaveAs(path);
-                    fetched.MediaUrl = "/img/" + fileUpload.FileName;
-                    string fullPath = Request.MapPath("~" + oldfilePath);
-                    if (System.IO.File.Exists(fullPath))
-                    {
-                        System.IO.File.Delete(fullPath);
-                    }
-                }
-
-                
+                var fileName = Path.GetFileName(fileUpload.FileName);
+                fileUpload.SaveAs(Path.Combine(Server.MapPath("~/img/"), fileName));
+                post.MediaUrl = "~/img/" + fileName;
 
             }
 
 
             if (ModelState.IsValid)
             {
+                var fetched = db.Posts.Find(post.Id);
+                fetched.Title = post.Title;
+                fetched.BodyText = post.BodyText;
+                fetched.MediaUrl = post.MediaUrl;
+                fetched.Published = post.Published;
+                fetched.Categories = post.Categories;
+                fetched.UpdateDate = post.UpdateDate;
+
+                if (fetched.MediaUrl == null)
+                {
+                    return new HttpNotFoundResult();
+
+                }
+               
 
                 
-
-
                 post.UpdateDate = new DateTimeOffset(DateTime.Now);
                 db.Entry(fetched).State = EntityState.Modified;
                 db.SaveChanges();
@@ -186,23 +182,7 @@ namespace BlogTest.Controllers
             base.Dispose(disposing);
         }
 
-        [HttpPost]
-        public ActionResult Upload(string ActionName)
-        {
-            var path = Server.MapPath("~/img/");
-            foreach (string item in Request.Files)
-            {
-                HttpPostedFileBase file = Request.Files[item];
-                if (file.ContentLength == 0)
-                {
-                    //Repeated upload file be skipped .
-                    continue;
-                }
-             string savedFileName = Path.Combine(path, Path.GetFileName(file.FileName));
-                file.SaveAs(savedFileName);
-            }
-            return RedirectToAction(ActionName);
-        }
+       
 
 
         }

@@ -31,10 +31,10 @@
             </div>
             <div class="col-md-9">
                 <ol class="breadcrumb pull-right">
-                    <li>
-                        <a href="#">Blog</a>
+                    <li class="active">
+                        @Html.ActionLink("Blog", "Index")
                     </li>
-                    <li class="active">Blog Item Full</li>
+                    <li>Blog Item Full</li>
                 </ol>
 
             </div>
@@ -129,16 +129,16 @@
                             <h3 class="post-title no-margin-top">Categories</h3>
                             <ul class="simple">
                                 <li>
-                                    <a href="#">Game Programming</a>
+                                    <a href="#">Cookies & Milk</a>
                                 </li>
                                 <li>
-                                    <a href="#">Artificial Intelligence</a>
+                                    <a href="#">IceCream Sandwich</a>
                                     <ul>
                                         <li>
-                                            <a href="#">Artificial Life</a>
+                                            <a href="#">Snicker Bar</a>
                                         </li>
                                         <li>
-                                            <a href="#">Neural Networks</a>
+                                            <a href="#">Black Coffee</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -146,7 +146,7 @@
                                     <a href="#">Resources</a>
                                 </li>
                                 <li>
-                                    <a href="#">Web Developer</a>
+                                    <a href="#">Coding</a>
                                 </li>
                             </ul>
                         </div>
@@ -155,24 +155,14 @@
                     </div> <!-- tab-content -->
                 </div>
 
-                <div class="panel panel-primary animated fadeInDown animation-delay-8">
-                    <div class="panel-heading">
-                        <i class="fa fa-play-circle"></i>Featured video
-                    </div>
-                    <div class="video">
-                        <iframe src="http://player.vimeo.com/video/21081887?title=0&amp;byline=0&amp;portrait=0"></iframe>
-
-                    </div>
-                </div>
-
                 <div class="panel panel-primary animated fadeInDown animation-delay-6">
                     <div class="panel-heading">
-                        <i class="fa fa-comments"></i> Recent Comments
+                        <i class="fa fa-comments"></i> Recent Post
                     </div>
                     <div class="panel-body">
                         <ul class="comments-sidebar">
                             <li>
-                                <img src="assets/img/demo/client.jpg" class="img-responsive" alt="Image">
+                                <img src="~/assets/img/demo/client.jpg" class="img-responsive" alt="Image">
                                 <h4>
                                     <a href="#">Andrew</a> in
                                     <a href="#">Lorem ipsum Fugiat elit occaecat aute nisi</a>
@@ -180,7 +170,7 @@
                                 <p>Lorem ipsum Occaecat ut esse amet ut eiusmod laborum cillum voluptate do laboris dolor ut elit aliquip velit ut nulla anim ...</p>
                             </li>
                             <li>
-                                <img src="assets/img/demo/client2.jpg" class="img-responsive" alt="Image">
+                                <img src="~/assets/img/demo/client2.jpg" class="img-responsive" alt="Image">
                                 <h4>
                                     <a href="#">Andrew</a> in
                                     <a href="#">Lorem ipsum Fugiat elit occaecat aute nisi</a>
@@ -188,7 +178,7 @@
                                 <p>Lorem ipsum Occaecat ut esse amet ut eiusmod laborum cillum voluptate do laboris dolor ut elit aliquip velit ut nulla anim ...</p>
                             </li>
                             <li>
-                                <img src="assets/img/demo/client6.jpg" class="img-responsive" alt="Image">
+                                <img src="~/assets/img/demo/client6.jpg" class="img-responsive" alt="Image">
                                 <h4>
                                     <a href="#">Andrew</a> in
                                     <a href="#">Lorem ipsum Fugiat elit occaecat aute nisi</a>
@@ -196,21 +186,14 @@
                                 <p>Lorem ipsum Occaecat ut esse amet ut eiusmod laborum cillum voluptate do laboris dolor ut elit aliquip velit ut nulla anim ...</p>
                             </li>
                             <li>
-                                <img src="assets/img/demo/client4.jpg" class="img-responsive" alt="Image">
+                                <img src="~/assets/img/demo/client4.jpg" class="img-responsive" alt="Image">
                                 <h4>
                                     <a href="#">Andrew</a> in
                                     <a href="#">Lorem ipsum Fugiat elit occaecat aute nisi</a>
                                 </h4>
                                 <p>Lorem ipsum Occaecat ut esse amet ut eiusmod laborum cillum voluptate do laboris dolor ut elit aliquip velit ut nulla anim ...</p>
                             </li>
-                            <li>
-                                <img src="assets/img/demo/client5.jpg" class="img-responsive" alt="Image">
-                                <h4>
-                                    <a href="#">Andrew</a> in
-                                    <a href="#">Lorem ipsum Fugiat elit occaecat aute nisi</a>
-                                </h4>
-                                <p>Lorem ipsum Occaecat ut esse amet ut eiusmod laborum cillum voluptate do laboris dolor ut elit aliquip velit ut nulla anim ...</p>
-                            </li>
+                            
                         </ul>
                     </div>
                 </div>

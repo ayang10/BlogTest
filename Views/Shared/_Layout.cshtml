@@ -9,15 +9,13 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
    
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~bundles/modernizr")
+    @* @Scripts.Render("~/bundles/modernizr") *@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-
-    <script src="~/Scripts/jQuery.dotdotdot-master/src/js/jquery.dotdotdot.js"></script>
-
-    <script src="~/Scripts/tinymce/tinymce.js"></script>
-    <script src="~/Scripts/tinymce/tinymce.min.js"></script>
+    @Scripts.Render("~/assets/css")
+    @Scripts.Render("~/assets/img")
+    @Scripts.Render("~/assets/js")
 
     <link rel="shortcut icon" href="~/assets/img/favicon.png" />
 

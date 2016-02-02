@@ -1,4 +1,5 @@
 ﻿@model BlogTest.Models.Post
+
 <div class="container">
     @{
         ViewBag.Title = "Edit";
@@ -47,10 +48,8 @@
                 @Html.LabelFor(model => model.MediaUrl, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
 
-                    
-                    <fieldset>
                         <input name="fileUpload" type="file" id="fileUpload" />
-                    </fieldset>
+                   
 
                     @Html.ValidationMessageFor(model => model.MediaUrl, "", new { @class = "text-danger" })
                 </div>
@@ -59,10 +58,10 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Published, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    <div class="checkbox">
+                    
                         @Html.EditorFor(model => model.Published)
                         @Html.ValidationMessageFor(model => model.Published, "", new { @class = "text-danger" })
-                    </div>
+                 
                 </div>
             </div>
 

@@ -13,7 +13,6 @@ namespace BlogTest.Models
 
     public class Post
     {
-        private int BodyTextLimit = 300;
 
         public Post()
         {
@@ -38,6 +37,8 @@ namespace BlogTest.Models
         public virtual ICollection<Category> Categories { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
 
+        private int BodyTextLimit = 300;
+
 
         public string BodyTextTrimmed
         {
@@ -49,23 +50,23 @@ namespace BlogTest.Models
                     return this.BodyText;
             }
         }
-
+        
 
         public static class ImageUploadValidator
         {
-            public static bool IsWebFriendlyImage(HttpPostedFileBase file)
+            public static bool IsWebFriendlyImage(HttpPostedFileBase fileUpload)
             {
                 //check for actual object
-                if (file == null)
+                if (fileUpload == null)
                     return false;
 
                 //check size - file must be  less than 2 MB and greater than 1 KB
-                if (file.ContentLength > 2 * 1024 * 1024)
+                if (fileUpload.ContentLength > 2 * 1024 * 1024)
                     return false;
 
                 try
                 {
-                    using (var img = Image.FromStream(file.InputStream))
+                    using (var img = Image.FromStream(fileUpload.InputStream))
                     {
                         return ImageFormat.Jpeg.Equals(img.RawFormat) ||
                                ImageFormat.Png.Equals(img.RawFormat) ||

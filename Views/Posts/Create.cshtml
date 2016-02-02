@@ -1,12 +1,9 @@
 ﻿@model BlogTest.Models.Post
-
 <div class="container">
     @{
         ViewBag.Title = "Create";
     }
-
     <h2>Create</h2>
-
 
     @using (Html.BeginForm("Create", "Posts", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
@@ -16,7 +13,6 @@
             <h4>Post</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
             <div class="form-group">
                 @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -24,37 +20,32 @@
                     @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
                 </div>
             </div>
-
             <div class="form-group">
                 @Html.LabelFor(model => model.BodyText, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
 
-                    
                     @Html.TextAreaFor(model => model.BodyText, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.BodyText, "", new { @class = "text-danger" })
                 </div>
             </div>
-
             <div class="form-group">
                 @Html.LabelFor(model => model.MediaUrl, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    
-                        <input name="fileUpload" type="file" class="form-control" id="fileUpload"  />
-                    
+                    @Html.HiddenFor(model => model.MediaUrl)
+                    <input name="fileUpload" type="file" id="fileUpload" />
+
                     @Html.ValidationMessageFor(model => model.MediaUrl, "", new { @class = "text-danger" })
                 </div>
             </div>
-
             <div class="form-group">
                 @Html.LabelFor(model => model.Published, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    <div class="checkbox">
+                  
                         @Html.EditorFor(model => model.Published, "", new { @class = "text-danger" })
                         @Html.ValidationMessageFor(model => model.Published, "", new { @class = "text-danger" })
-                    </div>
+               
                 </div>
             </div>
-
             <div class="form-group">
                 @Html.LabelFor(model => model.CategoryId, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -62,7 +53,6 @@
                     @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
                 </div>
             </div>
-
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Create" class="btn btn-primary" />
@@ -70,21 +60,19 @@
             </div>
         </div>
     }
-
     <div>
         @Html.ActionLink("Back to List", "Index")
     </div>
 </div><!--end container-->
-
 @section Scripts{
-<script type="text/javascript" src='//cdn.tinymce.com/4/tinymce.min.js'></script>
-<script type="text/javascript">
+    <script type="text/javascript" src='//cdn.tinymce.com/4/tinymce.min.js'></script>
+    <script type="text/javascript">
   tinymce.init({
     selector: 'textarea',
     theme: 'modern',
     width: 943,
     height: 300,
-   
+
   });
     </script>
 }
