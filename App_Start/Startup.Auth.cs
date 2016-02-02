@@ -55,13 +55,13 @@ namespace BlogTest
             //   consumerSecret: "");
 
               app.UseFacebookAuthentication(
-              appId: "796190883842284",
-              appSecret: "bb4b2ed1a0541c2dff7bf763420526c3"); 
+              appId: "1785909641622493",
+              appSecret: "d7365d7d472e9c6f39c4930b394520b9"); 
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-               ClientId = "333094364194-u0a3bs9djuj29n4idtugqdbnpv5aq9co.apps.googleusercontent.com",
-                ClientSecret = "YoqVpR0JZ0AWT6QwnpXhN9Ky"
+               ClientId = "333094364194-b1n3til6jev1a2kb3keqfendekmvrcg4.apps.googleusercontent.com",
+                ClientSecret = "2k0gt7R2G_GfIa2A7cTwQFB6"
             });
         }
     }

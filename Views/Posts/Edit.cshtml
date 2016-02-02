@@ -48,6 +48,9 @@
                 @Html.LabelFor(model => model.MediaUrl, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
 
+                    @Html.HiddenFor(model => model.MediaUrl)
+                    @Html.DisplayFor(model => model.MediaUrl)
+                    @*Html.EditorFor(model => model.MediaUrl, new { htmlAttributes = new { @class = "form-control", @type= "file", @name= "fileUpload", @id= "fileUpload" } })*@
                         <input name="fileUpload" type="file" id="fileUpload" />
                    
 

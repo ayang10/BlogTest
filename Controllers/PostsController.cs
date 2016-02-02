@@ -104,16 +104,6 @@ namespace BlogTest.Controllers
             post.UpdateDate = new DateTimeOffset(DateTime.Now);
             
             
-            // restricting the valid file formats to images only
-            if (Post.ImageUploadValidator.IsWebFriendlyImage(fileUpload))
-            {
-                var fileName = Path.GetFileName(fileUpload.FileName);
-                fileUpload.SaveAs(Path.Combine(Server.MapPath("~/img/"), fileName));
-                post.MediaUrl = "~/img/" + fileName;
-
-            }
-
-
             if (ModelState.IsValid)
             {
                 var fetched = db.Posts.Find(post.Id);
@@ -124,14 +114,15 @@ namespace BlogTest.Controllers
                 fetched.Categories = post.Categories;
                 fetched.UpdateDate = post.UpdateDate;
 
-                if (fetched.MediaUrl == null)
+                // restricting the valid file formats to images only
+                if (Post.ImageUploadValidator.IsWebFriendlyImage(fileUpload))
                 {
-                    return new HttpNotFoundResult();
+                    var fileName = Path.GetFileName(fileUpload.FileName);
+                    fileUpload.SaveAs(Path.Combine(Server.MapPath("~/img/"), fileName));
+                    fetched.MediaUrl = "~/img/" + fileName;
 
                 }
-               
 
-                
                 post.UpdateDate = new DateTimeOffset(DateTime.Now);
                 db.Entry(fetched).State = EntityState.Modified;
                 db.SaveChanges();
