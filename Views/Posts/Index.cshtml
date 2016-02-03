@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-md-12">
             <center>
-                <img src="~/assets/img/blog.png" alt="" width="500" height="200" />
+                <img src="~/assets/img/blog.png"  class="thumbnail" alt="" width="500" height="200" />
             </center>
         </div>
 
@@ -32,7 +32,7 @@
             <div class="col-md-9">
                 <ol class="breadcrumb pull-right">
                     <li class="active">
-                        @Html.ActionLink("Blog", "Index")
+                        Blog
                     </li>
                     <li>Blog Item Full</li>
                 </ol>
@@ -90,7 +90,7 @@
                                     @if (User.IsInRole("Admin"))
                                     {
                                         <p>
-                                            @Html.ActionLink("Delete Post", "Delete", new { @post.Id })
+                                            @Html.ActionLink("Delete Post", "Delete", new { @post.Id }) &raquo;
                                         </p>
                                     }
                                 </div>
@@ -101,7 +101,7 @@
                                     @if (User.IsInRole("Admin"))
                                     {
                                         <p>
-                                            @Html.ActionLink("Edit", "Edit", new { @post.Id })
+                                            @Html.ActionLink("Edit", "Edit", new { @post.Id }) &raquo;
                                         </p>
                                     }
                                 </div>

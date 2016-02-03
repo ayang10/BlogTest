@@ -53,7 +53,7 @@ namespace BlogTest
             //app.UseTwitterAuthentication(
             //   consumerKey: "",
             //   consumerSecret: "");
-
+            
               app.UseFacebookAuthentication(
               appId: "1785909641622493",
               appSecret: "d7365d7d472e9c6f39c4930b394520b9"); 

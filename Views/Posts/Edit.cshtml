@@ -49,8 +49,7 @@
                 <div class="col-md-10">
 
                     @Html.HiddenFor(model => model.MediaUrl)
-                    @Html.DisplayFor(model => model.MediaUrl)
-                    @*Html.EditorFor(model => model.MediaUrl, new { htmlAttributes = new { @class = "form-control", @type= "file", @name= "fileUpload", @id= "fileUpload" } })*@
+                    <h6>Current file: @Html.DisplayFor(model => model.MediaUrl) </h6>
                         <input name="fileUpload" type="file" id="fileUpload" />
                    
 
