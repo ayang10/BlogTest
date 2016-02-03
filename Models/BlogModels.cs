@@ -116,7 +116,7 @@ namespace BlogTest.Models
         public string Body { get; set; }
         public DateTimeOffset Created { get; set; }
         public DateTimeOffset? Updated { get; set; }
-        public int ParentCommentId { get; set; }
+        public int? ParentCommentId { get; set; }
         public bool MarkForDeletion { get; set; }
 
         public Post Post { get; set; }

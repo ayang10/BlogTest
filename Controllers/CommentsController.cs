@@ -38,13 +38,11 @@ namespace BlogTest.Controllers
 
         // GET: Comments/Create
         [Authorize] //this limit users, you need to be logged in
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
-            ViewBag.AuthorId = new SelectList(db.Users, "Id", "FirstName");
-            ViewBag.EditorId = new SelectList(db.Users, "Id", "FirstName");
-            ViewBag.ParentCommentId = new SelectList(db.Comments, "Id", "AuthorId");
-            ViewBag.PostId = new SelectList(db.Posts, "Id", "title");
-            return View();
+            Comment model = new Comment { PostId = id };
+
+            return View(model);
         }
 
         // POST: Comments/Create
@@ -53,20 +51,18 @@ namespace BlogTest.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Create([Bind(Include = "Id,PostId,AuthorId,EditorId,Body,Created,Updated,ParentCommentId,MarkForDeletion")] Comment comment)
+        public ActionResult Create([Bind(Include = "PostId,Body")] Comment comment)
         {
             if (ModelState.IsValid)
             {
                 comment.Created = new DateTimeOffset(DateTime.Now);
+                comment.AuthorId = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name).Id; //grab the id of the current login user, assign that to the AuthorId
+               
                 db.Comments.Add(comment);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Posts", new { id = comment.PostId }); //redirect this create to Posts view Details page.
             }
-
-            ViewBag.AuthorId = new SelectList(db.Users, "Id", "FirstName", comment.AuthorId);
-            ViewBag.EditorId = new SelectList(db.Users, "Id", "FirstName", comment.EditorId);
-            ViewBag.ParentCommentId = new SelectList(db.Comments, "Id", "AuthorId", comment.ParentCommentId);
-            ViewBag.PostId = new SelectList(db.Posts, "Id", "Title", comment.PostId);
+            
             return View(comment);
         }
 
@@ -116,7 +112,8 @@ namespace BlogTest.Controllers
         }
 
         // GET: Comments/Delete/5
-        public ActionResult Delete(int? id)
+        [Authorize (Roles = "Admin, Moderator")]
+        public ActionResult Delete(int? id, int postId)
         {
             if (id == null)
             {
@@ -127,7 +124,10 @@ namespace BlogTest.Controllers
             {
                 return HttpNotFound();
             }
-            return View(comment);
+            comment.MarkForDeletion = true;
+            db.SaveChanges();
+            return RedirectToAction("Delete", "Comments", new { id = postId });
+            //return View(comment);
         }
 
         // POST: Comments/Delete/5
@@ -136,6 +136,7 @@ namespace BlogTest.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Comment comment = db.Comments.Find(id);
+            comment.MarkForDeletion = true;
             db.Comments.Remove(comment);
             db.SaveChanges();
             return RedirectToAction("Index");

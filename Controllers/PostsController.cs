@@ -14,10 +14,12 @@ namespace BlogTest.Controllers
     public class PostsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        
 
         // GET: Posts
         public ActionResult Index()
         {
+            
             return View(db.Posts.ToList());
         }
 
