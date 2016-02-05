@@ -20,15 +20,62 @@ namespace BlogTest.Controllers
         
 
         // GET: Posts
-        public ActionResult Index(int? page)
+        public ActionResult Index(/*int? page*/string sortOrder, string currentFilter, string searchString, int? page)
         {
-            int pageSize = 5;
-            int pageNumber = (page ?? 1);
+            //int pageSize = 5;
+            //int pageNumber = (page ?? 1);
 
-            var postList = db.Posts.OrderBy(i => i.Id).ToPagedList(pageNumber, pageSize);
+            //var postList = db.Posts.OrderBy(i => i.Id).ToPagedList(pageNumber, pageSize);
+
+
+            //return View(postList);
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var students = from s in db.Posts
+                           select s;
+            
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                students = students.Where(s => s.Title.Contains(searchString)
+                                       || s.BodyText.Contains(searchString)
+                                       || s.Comments.Any(c => c.Body.Contains(searchString))
+                                       || s.Comments.Any(c => c.Author.UserName.Contains(searchString)));
+            }
             
 
-            return View(postList);
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    students = students.OrderByDescending(s => s.Title);
+                    break;
+                case "Date":
+                    students = students.OrderBy(s => s.CreationDate);
+                    break;
+                case "date_desc":
+                    students = students.OrderByDescending(s => s.CreationDate);
+                    break;
+                default:  // Name ascending 
+                    students = students.OrderBy(s => s.Title);
+                    break;
+            }
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(students.ToPagedList(pageNumber, pageSize));
         }
         
 
@@ -122,7 +169,6 @@ namespace BlogTest.Controllers
                 fetched.BodyText = post.BodyText;
                 fetched.MediaUrl = post.MediaUrl;
                 fetched.Published = post.Published;
-                fetched.Categories = post.Categories;
                 fetched.UpdateDate = post.UpdateDate;
 
                 // restricting the valid file formats to images only

@@ -4,22 +4,22 @@
     ViewBag.Title = "Create";
 }
 <div class="container">
-<h2>Create</h2>
+    <h2>Create</h2>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>Comment</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-       @Html.HiddenFor(m => m.PostId)
-        @Html.DisplayFor(m => m.Author)
-        @Html.HiddenFor(m => m.AuthorId)
-       @Html.HiddenFor(m => m.ParentCommentId)
-       
+
+        <div class="form-horizontal">
+            <h4>Comment</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(m => m.PostId)
+            @Html.DisplayFor(m => m.Author)
+            @Html.HiddenFor(m => m.AuthorId)
+            @Html.HiddenFor(m => m.ParentCommentId)
+
 
             <div class="form-group">
                 @Html.LabelFor(model => model.Body, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -38,13 +38,13 @@
                 </div>
             </div>
         </div>
-    <div>
-        @Html.ActionLink("Back to List", "Details", "Posts")
-    </div>
-}
+        <div>
+            @Html.ActionLink("Back to List", "Details", "Posts")
+        </div>
+    }
 
-    
-    </div>
+
+</div>
 
 
 
@@ -53,13 +53,13 @@
 @section Scripts{
     <script type="text/javascript" src='//cdn.tinymce.com/4/tinymce.min.js'></script>
     <script type="text/javascript">
-  tinymce.init({
-    selector: 'textarea',
-    theme: 'modern',
-    width: 943,
-    height: 300,
+        tinymce.init({
+            selector: 'textarea',
+            theme: 'modern',
+            width: 943,
+            height: 300,
 
-  });
+        });
     </script>
 
 

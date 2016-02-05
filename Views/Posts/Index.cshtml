@@ -21,8 +21,6 @@
 </div>
 
 
-
-
 @if (User.IsInRole("Admin"))
 {
     <div class="container">
@@ -37,7 +35,6 @@
                     <li class="active">
                         Blog
                     </li>
-                    <li>Blog Item Full</li>
                 </ol>
 
             </div>
@@ -49,12 +46,15 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-9">
 
             <article class="post animated fadeInDown animation-delay-6">
-
+           
                 @foreach (var post in Model)
                 {
+
+                    
+                    
                     <div class="panel panel-primary">
                         <div class="panel-body">
                             <h1 class="post-title-size">@post.Title</h1>
@@ -80,8 +80,6 @@
 
 
                                     <i class="fa fa-user"> </i>A Yang
-                                    <i class="fa fa-folder-open"></i>
-                                    <a href="#">@post.CategoryId</a>
                                 </div>
                                 <div class="col-lg-2 col-md-3 col-sm-4">
                                     <a href="#" class="pull-right">@Html.ActionLink("Read more", "Details", new { @post.Id }) &raquo;</a>
@@ -118,78 +116,50 @@
 
             </article> <!-- post -->
 
-        </div><!--close col-md-8-->
-        <div class="col-md-4">
+        </div><!--close col-md-9-->
+        <div class="col-md-3">
             <aside class="sidebar">
-                <div class="block animated fadeInDown animation-delay-12">
-                    <div class="input-group">
-                        <input type="text" placeholder="Search..." class="form-control">
-                        <span class="input-group-btn">
-                            <button class="btn btn-ar btn-primary" type="button"><i class="fa fa-search no-margin-right"></i></button>
-                        </span>
-                    </div><!-- /input-group -->
-                </div>
+               @using (Html.BeginForm("Index", "Posts", FormMethod.Get))
+               {
+                
+                     @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Search Blog", Style = "background: white; border: 1px solid blue; border-radius: 5px; box-shadow: 0 0 5px 3px blue; color: #666; outline: none;" })
+                  
+                    <input type="submit" value="Search" />
+                
+               }
 
+            <br />
                 <div class="block animated fadeInDown animation-delay-10">
                     <ul class="nav nav-tabs nav-tabs-ar" id="myTab2">
 
                         <li class="active">
-                            <a href="#categories" data-toggle="tab"><i class="fa fa-folder-open"></i></a>
+                            <a href="#categories" data-toggle="tab"><i class="fa fa-sort-amount-asc"></i></a>
                         </li>
                     </ul>
                     <div class="tab-content">
 
                         <div class="tab-pane active" id="categories">
-                            <h3 class="post-title no-margin-top">Categories</h3>
+                            <h3 class="post-title no-margin-top">Sorting</h3>
                             <ul class="simple">
+
                                 <li>
-                                    <a href="#">Cookies & Milk</a>
+                                    @Html.ActionLink("All Blog", "Index")
                                 </li>
                                 <li>
-                                    <a href="#">IceCream Sandwich</a>
+                                    @Html.ActionLink("Ascending Order", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
                                     <ul>
                                         <li>
-                                            <a href="#">Snicker Bar</a>
+                                           @Html.ActionLink("Descending Order", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
                                         </li>
-                                        <li>
-                                            <a href="#">Black Coffee</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#">Resources</a>
-                                </li>
-                                <li>
-                                    <a href="#">Coding</a>
-                                </li>
+                                       
                             </ul>
+                                    </ul>
                         </div>
 
 
                     </div> <!-- tab-content -->
                 </div>
             
-               
-                    <div class="panel panel-primary animated fadeInDown animation-delay-6">
-                        <div class="panel-heading">
-                            <i class="fa fa-comments"></i> Recent Post
-                        </div>
-
-                        <div class="panel-body">
-                            <ul class="comments-sidebar">
-                                <li>
-                                    <img src="~/assets/img/" class="img-responsive" alt="Image">
-                                    <h4>
-                                        <a href="#">Andrew</a> in
-                                        <a href="#">Lorem ipsum Fugiat elit occaecat aute nisi</a>
-                                    </h4>
-                                    <p>Lorem ipsum Occaecat ut esse amet ut eiusmod laborum cillum voluptate do laboris dolor ut elit aliquip velit ut nulla anim ...</p>
-                                </li>
-
-
-                            </ul>
-                        </div>
-                    </div>
 
 
                 </aside> <!-- Sidebar -->
@@ -200,7 +170,22 @@
             </div><!--end row-->
 
             <div class="container">
-                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))*@
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+                @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
             </div>
 
         </div><!--end container-->
+
+
+
+
+@*<script>
+    if(@ViewBag.searchString != null){
+        var word = @ViewBag.searchString;
+        $
+    }
+
+</script>*@

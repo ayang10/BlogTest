@@ -137,17 +137,18 @@ namespace BlogTest.Controllers
             }
             comment.MarkForDeletion = true;
             db.SaveChanges();
-            return RedirectToAction("Delete", "Comments", new { id = postId });
+            return RedirectToAction("Details", "Posts", new { id = postId });
             //return View(comment);
         }
 
         // POST: Comments/Delete/5
+        [Authorize(Roles = "Admin, Moderator")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             Comment comment = db.Comments.Find(id);
-            comment.MarkForDeletion = true;
+           
             db.Comments.Remove(comment);
             db.SaveChanges();
             return RedirectToAction("Index");

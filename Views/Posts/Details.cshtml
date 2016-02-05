@@ -40,24 +40,26 @@
                 </div>
             </section>
 
-            <br />
+            @*<br />
             <div class="container">
 
                 @Html.ActionLink("Add Comment", "Create", "Comments", new { id = Model.Id }, new { @class = "btn btn-default"})
 
-            </div>
+            </div>*@
 
             <br />
 
-            <section>
+            <section class="col-md-8">
                 <h2 class="section-title">Comments</h2>
                 <ul class="list-unstyled">
                     @foreach (var c in Model.Comments)
                     {
+                        if (!c.MarkForDeletion)
+                        {
                         <li class="comment">
                             <div class="panel panel-default">
                                 <div class="panel-body">
-                                    <img src="~/assets/img/anonymous.png" alt="" class="thumbnail alignleft">
+                                    <img src="~/assets/img/anonymous.png" alt="" class="thumbnail alignleft" width="70" height="70">
                                     <p>@Html.Raw(c.Body)</p>
                                 </div>
                                 <div class="panel-footer">
@@ -69,43 +71,34 @@
                                         @if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
                                         {
                                             <div class="col-lg-2 col-md-3 col-sm-4">
-
-                                                <i class="glyphicon-remove-circle"></i> @Html.ActionLink("Delete", "Delete", "Comments", new { id = @c.Id, postId = @c.Id }, null)
+                                                
+                                                <i class="glyphicon-remove-circle"></i> @Html.ActionLink("Delete", "Delete", "Comments", new { id = @c.Id, postId = @Model.Id }, null)
 
                                             </div>
                                         }
-                                        <div class="col-lg-2 col-md-3 col-sm-4 pull-right">
-                                            <i class="fa fa-reply"></i>@Html.ActionLink("Reply", "Create", "Comments", new { id = Model.Id })
-                                        </div>
+                                        @*<div class="col-lg-2 col-md-3 col-sm-4 pull-right">
+                                            
+                                            @Html.ActionLink("Reply", "Create", "Comments", new { id = @c.Id }, new { @class = "btn btn-default" })
+                                          
+                                        </div>*@
                                     </div>
                                 </div>
                                 </div>
                         </li>
+                            }
+                        }
 
-                    }
 
                 </ul>
             </section> <!-- comments -->
-            @*<section class="comment-form">
-                    <h2 class="section-title">Leave a Comment</h2>
-                    <form role="form">
-
-                        <div class="form-group">
-                            <label for="inputMessage">Mesagge</label>
-                            <textarea class="form-control" id="inputMessage" rows="6"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-ar btn-primary">Submit</button>
-                    </form>
-                </section>  comment-form*@
-            <br />
-            <div class="container">
-                @*@Html.Partial("_Comment", new BlogTest.Models.Comment())*@
-                @Html.Partial("_Comment", new BlogTest.Models.Comment { PostId = Model.Id })
-            </div>
-
-
+          
 
         </div> <!--end col-md-12-->
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                @Html.Partial("_Comment", new BlogTest.Models.Comment { @PostId = Model.Id })
+            </div>
+        </div>
     </div><!--end row-->
 
 </div><!--end container-->

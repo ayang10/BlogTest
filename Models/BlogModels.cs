@@ -17,7 +17,6 @@ namespace BlogTest.Models
         public Post()
         {
             this.Comments = new HashSet<Comment>();
-            this.Categories = new HashSet<Category>();
         }
         public int Id { get; set; }
         public DateTimeOffset CreationDate { get; set; }
@@ -31,10 +30,8 @@ namespace BlogTest.Models
         public string MediaUrl { get; set; }
 
         public bool Published { get; set; }
-        public int CategoryId { get; set; }
 
         //joined table //add virtual for lazy loading
-        public virtual ICollection<Category> Categories { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
 
         private int BodyTextLimit = 300;
@@ -87,20 +84,6 @@ namespace BlogTest.Models
 
     }
 
-    public class Category
-    {
-        public Category()
-        {
-            this.Posts = new HashSet<Post>();
-        }
-
-        public int Id { get; set; }
-        public string Name { get; set; }
-
-        //joined table //add virtual for lazy loading
-        public virtual ICollection<Post> Posts { get; set; }
-
-    }
 
 
     public class Comment {

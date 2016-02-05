@@ -179,7 +179,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -540,6 +539,9 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\zocial-less-gh-pages\css\zocial-regular-webfont.svg" />
+    <Content Include="Content\zocial-less-gh-pages\css\zocial.css" />
+    <Content Include="Content\zocial-less-gh-pages\index.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -582,6 +584,12 @@
     <Content Include="assets\fonts\socialglyphs-webfont.ttf" />
     <Content Include="assets\fonts\socialglyphs-webfont.woff" />
     <Content Include="assets\js\jquery.min.map" />
+    <Content Include="Content\zocial-less-gh-pages\bower.json" />
+    <Content Include="Content\zocial-less-gh-pages\css\zocial-regular-webfont.eot" />
+    <Content Include="Content\zocial-less-gh-pages\css\zocial-regular-webfont.ttf" />
+    <Content Include="Content\zocial-less-gh-pages\css\zocial-regular-webfont.woff" />
+    <Content Include="Content\zocial-less-gh-pages\css\zocial.less" />
+    <Content Include="Content\zocial-less-gh-pages\README.md" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -659,11 +667,6 @@
     <Content Include="Views\Comments\Details.cshtml" />
     <Content Include="Views\Comments\Edit.cshtml" />
     <Content Include="Views\Comments\Index.cshtml" />
-    <Content Include="Views\Categories\Create.cshtml" />
-    <Content Include="Views\Categories\Delete.cshtml" />
-    <Content Include="Views\Categories\Details.cshtml" />
-    <Content Include="Views\Categories\Edit.cshtml" />
-    <Content Include="Views\Categories\Index.cshtml" />
     <Content Include="Views\Shared\_Comment.cshtml" />
   </ItemGroup>
   <ItemGroup>
