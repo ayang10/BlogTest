@@ -1995,6 +1995,8 @@ a > .icon-ar.icon-ar-inverse:hover {
 }
 .modal-content {
   border-radius: 0px;
+  width: 600px !important;
+         margin: 30px auto !important;
 }
 .modal-body.no-padding {
   padding: 0;

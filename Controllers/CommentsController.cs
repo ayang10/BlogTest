@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BlogTest.Models;
+using Microsoft.AspNet.Identity;
 
 namespace BlogTest.Controllers
 {
@@ -17,7 +18,7 @@ namespace BlogTest.Controllers
         // GET: Comments
         public ActionResult Index()
         {
-            var comments = db.Comments.Include(c => c.Author).Include(c => c.Editor).Include(c => c.ParentComment).Include(c => c.Post);
+            var comments = db.Comments.Include(c => c.Author).Include(c => c.Editor).Include(c => c.ParentComment).Include(c => c.Post).Include(c => c.MarkForDeletion);
             return View(comments.ToList());
         }
 
@@ -51,18 +52,28 @@ namespace BlogTest.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Create([Bind(Include = "PostId,Body")] Comment comment)
+        public ActionResult Create([Bind(Include = "Id,PostId,AuthorId,EditorId,Body,Created,Updated,ParentCommentId,MarkForDeletion")] Comment comment)
         {
+            comment.Created = new DateTimeOffset(DateTime.Now);
+
             if (ModelState.IsValid)
             {
+
                 comment.Created = new DateTimeOffset(DateTime.Now);
+
                 comment.AuthorId = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name).Id; //grab the id of the current login user, assign that to the AuthorId
-               
+
+
+                //var user = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
+                //comment.AuthorId = user.Id; //grab the id of the current login user, assign that to the AuthorId
+                //comment.Author = user;
+
+
                 db.Comments.Add(comment);
                 db.SaveChanges();
                 return RedirectToAction("Details", "Posts", new { id = comment.PostId }); //redirect this create to Posts view Details page.
             }
-            
+
             return View(comment);
         }
 
@@ -79,7 +90,7 @@ namespace BlogTest.Controllers
             {
                 return HttpNotFound();
             }
-            if(User.Identity.Name != comment.Author.UserName)
+            if (User.Identity.Name != comment.Author.UserName)
             {
                 return RedirectToAction("Index");
             }
@@ -87,7 +98,7 @@ namespace BlogTest.Controllers
             ViewBag.EditorId = new SelectList(db.Users, "Id", "FirstName", comment.EditorId);
             ViewBag.ParentCommentId = new SelectList(db.Comments, "Id", "AuthorId", comment.ParentCommentId);
             ViewBag.PostId = new SelectList(db.Posts, "Id", "title", comment.PostId);
-            
+
             return View(comment);
         }
 
@@ -112,7 +123,7 @@ namespace BlogTest.Controllers
         }
 
         // GET: Comments/Delete/5
-        [Authorize (Roles = "Admin, Moderator")]
+        [Authorize(Roles = "Admin, Moderator")]
         public ActionResult Delete(int? id, int postId)
         {
             if (id == null)
@@ -150,5 +161,9 @@ namespace BlogTest.Controllers
             }
             base.Dispose(disposing);
         }
+
+        
+
+
     }
 }

@@ -12,12 +12,12 @@
     @* @Scripts.Render("~/bundles/modernizr") *@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    
     @Scripts.Render("~/assets/css")
     @Scripts.Render("~/assets/img")
     @Scripts.Render("~/assets/js")
 
-    <link rel="shortcut icon" href="~/assets/img/favicon.png" />
+    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
     <meta name="description" content="">
 
@@ -47,6 +47,28 @@
         <script src="assets/js/html5shiv.min.js"></script>
         <script src="assets/js/respond.min.js"></script>
     <![endif]-->
+
+    <script>
+        $(function () {
+            $("#dialog-modal").dialog({
+                width: 200,
+                height: 200,
+                show: {
+                    effect: "shake",
+                    duration: 100
+                },
+                hide: {
+                    effect: "explode",
+                    duration: 1000
+                }
+            });
+            $("#modal-opener").click(function () {
+                $("#dialog-modal").dialog("open");
+            })
+        })
+    </script>
+
+
 </head>
 
 
@@ -127,6 +149,8 @@
                 </div>
             </div>
 
+            
+
            @RenderBody()
         <!--render-->
 
@@ -147,7 +171,7 @@
     <!-- Scripts -->
     <!-- Compiled in vendors.js -->
     
-
+    @RenderSection("scripts", required: false)
 
     <script src="~/assets/js/jquery.min.js"></script>
     <script src="~/assets/js/jquery.cookie.js"></script>

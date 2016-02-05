@@ -1,8 +1,11 @@
-﻿@model IEnumerable<BlogTest.Models.Post>
-    
+﻿
+@model PagedList.IPagedList<BlogTest.Models.Post>
+
+@using PagedList.Mvc;
+
 @{
     ViewBag.Title = "Index";
-   
+
 }
 
 <br />
@@ -10,7 +13,7 @@
     <div class="row">
         <div class="col-md-12">
             <center>
-                <img src="~/assets/img/blog.png"  class="thumbnail" alt="" width="500" height="200" />
+                <img src="~/assets/img/blog.png" class="thumbnail" alt="" width="500" height="200" />
             </center>
         </div>
 
@@ -49,72 +52,72 @@
         <div class="col-md-8">
 
             <article class="post animated fadeInDown animation-delay-6">
-               
-                    @foreach (var post in Model)
-                    {
-                        <div class="panel panel-primary">
-                            <div class="panel-body">
-                                <h1 class="post-title-size">@post.Title</h1>
-                                <div class="row">
-                                    <div class="col-md-6">
 
-                                        @if (post.MediaUrl != null)
-                                        {
-                                            <img src="@Url.Content(post.MediaUrl)" class="img-thumbnail" alt="Cinque Terre" width="500" height="300" />
-                                        }
-                                    </div>
-                                    <div class="col-xs-12 col-md-6">
+                @foreach (var post in Model)
+                {
+                    <div class="panel panel-primary">
+                        <div class="panel-body">
+                            <h1 class="post-title-size">@post.Title</h1>
+                            <div class="row">
+                                <div class="col-md-6">
 
-                                        @Html.Raw(post.BodyTextTrimmed)
-
-                                    </div>
+                                    @if (post.MediaUrl != null)
+                                    {
+                                        <img src="@Url.Content(post.MediaUrl)" class="img-thumbnail" alt="Cinque Terre" width="500" height="300" />
+                                    }
                                 </div>
-                            </div>
-                            <div class="panel-footer">
-                                <div class="row">
-                                    <div class="col-lg-10 col-md-9 col-sm-4">
-                                        <i class="fa fa-clock-o"> @post.CreationDate</i>
+                                <div class="col-xs-12 col-md-6">
 
+                                    @Html.Raw(post.BodyTextTrimmed)
 
-                                        <i class="fa fa-user"> </i>A Yang
-                                        <i class="fa fa-folder-open"></i>
-                                        <a href="#">@post.CategoryId</a>
-                                    </div>
-                                    <div class="col-lg-2 col-md-3 col-sm-4">
-                                        <a href="#" class="pull-right">@Html.ActionLink("Read more", "Details", new { @post.Id }) &raquo;</a>
-                                    </div>
-                                    <div class="col-lg-6 col-md-3 col-sm-4">
-                                        @if (post.UpdateDate != null)
-                                        {
-                                            <i>Update: @post.UpdateDate</i>
-                                        }
-                                    </div>
-                                    <div class="col-md-2 pull-right">
-                                        @if (User.IsInRole("Admin"))
-                                        {
-                                            <p>
-                                                @Html.ActionLink("Delete Post", "Delete", new { @post.Id }) &raquo;
-                                            </p>
-                                        }
-                                    </div>
-
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-2 pull-right">
-                                        @if (User.IsInRole("Admin"))
-                                        {
-                                            <p>
-                                                @Html.ActionLink("Edit", "Edit", new { @post.Id }) &raquo;
-                                            </p>
-                                        }
-                                    </div>
                                 </div>
                             </div>
                         </div>
-                    }
-                  
-</article> <!-- post -->
-        
+                        <div class="panel-footer">
+                            <div class="row">
+                                <div class="col-lg-10 col-md-9 col-sm-4">
+                                    <i class="fa fa-clock-o"> @post.CreationDate</i>
+
+
+                                    <i class="fa fa-user"> </i>A Yang
+                                    <i class="fa fa-folder-open"></i>
+                                    <a href="#">@post.CategoryId</a>
+                                </div>
+                                <div class="col-lg-2 col-md-3 col-sm-4">
+                                    <a href="#" class="pull-right">@Html.ActionLink("Read more", "Details", new { @post.Id }) &raquo;</a>
+                                </div>
+                                <div class="col-lg-6 col-md-3 col-sm-4">
+                                    @if (post.UpdateDate != null)
+                                    {
+                                        <i>Update: @post.UpdateDate</i>
+                                    }
+                                </div>
+                                <div class="col-md-2 pull-right">
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <p>
+                                            @Html.ActionLink("Delete Post", "Delete", new { @post.Id }) &raquo;
+                                        </p>
+                                    }
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 pull-right">
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <p>
+                                            @Html.ActionLink("Edit", "Edit", new { @post.Id }) &raquo;
+                                        </p>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </article> <!-- post -->
+
         </div><!--close col-md-8-->
         <div class="col-md-4">
             <aside class="sidebar">
@@ -129,13 +132,13 @@
 
                 <div class="block animated fadeInDown animation-delay-10">
                     <ul class="nav nav-tabs nav-tabs-ar" id="myTab2">
-                       
+
                         <li class="active">
                             <a href="#categories" data-toggle="tab"><i class="fa fa-folder-open"></i></a>
                         </li>
                     </ul>
                     <div class="tab-content">
-                        
+
                         <div class="tab-pane active" id="categories">
                             <h3 class="post-title no-margin-top">Categories</h3>
                             <ul class="simple">
@@ -165,61 +168,39 @@
 
                     </div> <!-- tab-content -->
                 </div>
+            
+               
+                    <div class="panel panel-primary animated fadeInDown animation-delay-6">
+                        <div class="panel-heading">
+                            <i class="fa fa-comments"></i> Recent Post
+                        </div>
 
-                <div class="panel panel-primary animated fadeInDown animation-delay-6">
-                    <div class="panel-heading">
-                        <i class="fa fa-comments"></i> Recent Post
+                        <div class="panel-body">
+                            <ul class="comments-sidebar">
+                                <li>
+                                    <img src="~/assets/img/" class="img-responsive" alt="Image">
+                                    <h4>
+                                        <a href="#">Andrew</a> in
+                                        <a href="#">Lorem ipsum Fugiat elit occaecat aute nisi</a>
+                                    </h4>
+                                    <p>Lorem ipsum Occaecat ut esse amet ut eiusmod laborum cillum voluptate do laboris dolor ut elit aliquip velit ut nulla anim ...</p>
+                                </li>
+
+
+                            </ul>
+                        </div>
                     </div>
-                    <div class="panel-body">
-                        <ul class="comments-sidebar">
-                            <li>
-                                <img src="~/assets/img/demo/client.jpg" class="img-responsive" alt="Image">
-                                <h4>
-                                    <a href="#">Andrew</a> in
-                                    <a href="#">Lorem ipsum Fugiat elit occaecat aute nisi</a>
-                                </h4>
-                                <p>Lorem ipsum Occaecat ut esse amet ut eiusmod laborum cillum voluptate do laboris dolor ut elit aliquip velit ut nulla anim ...</p>
-                            </li>
-                            <li>
-                                <img src="~/assets/img/demo/client2.jpg" class="img-responsive" alt="Image">
-                                <h4>
-                                    <a href="#">Andrew</a> in
-                                    <a href="#">Lorem ipsum Fugiat elit occaecat aute nisi</a>
-                                </h4>
-                                <p>Lorem ipsum Occaecat ut esse amet ut eiusmod laborum cillum voluptate do laboris dolor ut elit aliquip velit ut nulla anim ...</p>
-                            </li>
-                            <li>
-                                <img src="~/assets/img/demo/client6.jpg" class="img-responsive" alt="Image">
-                                <h4>
-                                    <a href="#">Andrew</a> in
-                                    <a href="#">Lorem ipsum Fugiat elit occaecat aute nisi</a>
-                                </h4>
-                                <p>Lorem ipsum Occaecat ut esse amet ut eiusmod laborum cillum voluptate do laboris dolor ut elit aliquip velit ut nulla anim ...</p>
-                            </li>
-                            <li>
-                                <img src="~/assets/img/demo/client4.jpg" class="img-responsive" alt="Image">
-                                <h4>
-                                    <a href="#">Andrew</a> in
-                                    <a href="#">Lorem ipsum Fugiat elit occaecat aute nisi</a>
-                                </h4>
-                                <p>Lorem ipsum Occaecat ut esse amet ut eiusmod laborum cillum voluptate do laboris dolor ut elit aliquip velit ut nulla anim ...</p>
-                            </li>
-                            
-                        </ul>
-                    </div>
-                </div>
 
 
-            </aside> <!-- Sidebar -->
-        </div>
+                </aside> <!-- Sidebar -->
+            </div>
+              
 
 
+            </div><!--end row-->
 
-    </div><!--end row-->
+            <div class="container">
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+            </div>
 
-
-
-
-</div><!--end container-->
-
-
+        </div><!--end container-->

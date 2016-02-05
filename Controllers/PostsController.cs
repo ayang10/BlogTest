@@ -8,6 +8,9 @@ using System.Web;
 using System.Web.Mvc;
 using BlogTest.Models;
 using System.IO;
+using PagedList;
+using PagedList.Mvc;
+
 
 namespace BlogTest.Controllers
 {
@@ -17,11 +20,17 @@ namespace BlogTest.Controllers
         
 
         // GET: Posts
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+            var postList = db.Posts.OrderBy(i => i.Id).ToPagedList(pageNumber, pageSize);
             
-            return View(db.Posts.ToList());
+
+            return View(postList);
         }
+        
 
         // GET: Posts/Details/5
         public ActionResult Details(int? id)
@@ -160,7 +169,7 @@ namespace BlogTest.Controllers
 
             Post post = db.Posts.Find(id);
             post.CreationDate = new DateTimeOffset(DateTime.Now);
-                post.UpdateDate = new DateTimeOffset(DateTime.Now);
+            post.UpdateDate = new DateTimeOffset(DateTime.Now);
             db.Posts.Remove(post);
             db.SaveChanges();
             return RedirectToAction("Index");

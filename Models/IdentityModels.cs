@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
 
 namespace BlogTest.Models
 {
@@ -12,6 +13,13 @@ namespace BlogTest.Models
         //add fields right here, example
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string DisplayName { get; set; }
+
+        public ApplicationUser()
+        {
+            this.BlogComments = new HashSet<Comment>();
+        }
+
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -20,6 +28,7 @@ namespace BlogTest.Models
             // Add custom user claims here
             return userIdentity;
         }
+        public virtual ICollection<Comment> BlogComments { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

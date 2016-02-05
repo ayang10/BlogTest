@@ -119,10 +119,11 @@ namespace BlogTest.Models
         public int? ParentCommentId { get; set; }
         public bool MarkForDeletion { get; set; }
 
-        public Post Post { get; set; }
-        public ApplicationUser Author { get; set; }
-        public ApplicationUser Editor { get; set; }
-        public Comment ParentComment { get; set; }
+        //virtual means navigation
+        public virtual Post Post { get; set; }
+        public virtual ApplicationUser Author { get; set; }
+        public virtual ApplicationUser Editor { get; set; }
+        public virtual Comment ParentComment { get; set; }
 
         //each comments under another comments //add virtual for lazy loading
         public virtual ICollection<Comment> Comments { get; set; }

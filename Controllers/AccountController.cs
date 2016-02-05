@@ -26,7 +26,10 @@ namespace BlogTest.Controllers
         {
             UserManager = userManager;
             SignInManager = signInManager;
+
+          
         }
+     
 
         public ApplicationSignInManager SignInManager
         {

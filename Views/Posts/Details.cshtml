@@ -1,6 +1,5 @@
 ﻿@model BlogTest.Models.Post
-
-
+@using Microsoft.AspNet.Identity
 
 <div class="container">
 
@@ -43,48 +42,85 @@
 
             <br />
             <div class="container">
-                @Html.ActionLink("Comment", "Create", "Comments", new { id = Model.Id }, new { @class = "btn btn-default" })
+
+                @Html.ActionLink("Add Comment", "Create", "Comments", new { id = Model.Id }, new { @class = "btn btn-default"})
 
             </div>
 
-            <div class="container">
-                <br />
-                <h2 class="page-header no-margin-top">Comment</h2>
-
-                @foreach (var c in Model.Comments)
-            {
-                    <div class="panel-footer">
-                        <div class="row">
-                            <div class="col-xs-12 col-md-12">
-                                <p>@Html.Raw(c.Body)</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-10 col-md-9 col-sm-4">
-                                <i class="fa fa-clock-o"> @c.Created</i>
-
-
-                                <i class="fa fa-user"> </i> @c.AuthorId
-
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12 col-md-6 pull-right">
-                                @if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
-                                {
-                                    @Html.ActionLink("Delete >>", "Delete", "Comments", new { id = @c.Id, postId = @Model.Id }, null)
-                                }
-                            </div>
-                        </div>
-                    </div>
-
-                }
-            </div>
             <br />
-       
+
+            <section>
+                <h2 class="section-title">Comments</h2>
+                <ul class="list-unstyled">
+                    @foreach (var c in Model.Comments)
+                    {
+                        <li class="comment">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <img src="~/assets/img/anonymous.png" alt="" class="thumbnail alignleft">
+                                    <p>@Html.Raw(c.Body)</p>
+                                </div>
+                                <div class="panel-footer">
+                                    <div class="row">
+                                        <div class="col-lg-10 col-md-9 col-sm-8">
+                                            <i class="fa fa-user"> </i> @c.Author.UserName
+                                            <i class="fa fa-clock-o"></i> @c.Created
+                                        </div>
+                                        @if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
+                                        {
+                                            <div class="col-lg-2 col-md-3 col-sm-4">
+
+                                                <i class="glyphicon-remove-circle"></i> @Html.ActionLink("Delete", "Delete", "Comments", new { id = @c.Id, postId = @c.Id }, null)
+
+                                            </div>
+                                        }
+                                        <div class="col-lg-2 col-md-3 col-sm-4 pull-right">
+                                            <i class="fa fa-reply"></i>@Html.ActionLink("Reply", "Create", "Comments", new { id = Model.Id })
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                        </li>
+
+                    }
+
+                </ul>
+            </section> <!-- comments -->
+            @*<section class="comment-form">
+                    <h2 class="section-title">Leave a Comment</h2>
+                    <form role="form">
+
+                        <div class="form-group">
+                            <label for="inputMessage">Mesagge</label>
+                            <textarea class="form-control" id="inputMessage" rows="6"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-ar btn-primary">Submit</button>
+                    </form>
+                </section>  comment-form*@
+            <br />
+            <div class="container">
+                @*@Html.Partial("_Comment", new BlogTest.Models.Comment())*@
+                @Html.Partial("_Comment", new BlogTest.Models.Comment { PostId = Model.Id })
+            </div>
 
 
 
         </div> <!--end col-md-12-->
     </div><!--end row-->
+
 </div><!--end container-->
+
+
+@section Scripts{
+    <script type="text/javascript" src='//cdn.tinymce.com/4/tinymce.min.js'></script>
+    <script type="text/javascript">
+        tinymce.init({
+            selector: 'textarea',
+            theme: 'modern',
+            width: 943,
+            height: 300,
+
+        });
+    </script>
+
+}
