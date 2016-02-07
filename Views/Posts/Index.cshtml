@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-md-12">
             <center>
-                <img src="~/assets/img/blog.png" class="thumbnail" alt="" width="500" height="200" />
+                <img src="~/assets/img/header-msmBlog.gif" class="thumbnail" alt="" width="500" height="200" />
             </center>
         </div>
 
@@ -42,14 +42,42 @@
     </div>
 }
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 pull-right">
+            @using (Html.BeginForm("Index", "Posts", FormMethod.Get))
+            {
+
+                @Html.TextBox("searchString", ViewBag.CurrentFilter as string, new { placeholder = "Search Blog...", Style = "background: white; border: 1px solid black; border-radius: 5px;" })
+
+                <input type="submit" value="Search" />
+
+            }
+        </div>
+        <div class="col-md-2 pull-right">
+            @Html.ActionLink("Ascending Order", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
+        </div>
+        <div class="col-md-3 pull-right ">
+            @Html.ActionLink("All Blog", "Index")
+        </div>
+    </div>
+</div>
+
 
 <div class="container">
 
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-12">
 
             <article class="post animated fadeInDown animation-delay-6">
-           
+
+                @if (Model.PageCount == 0)
+                {
+                    <p class="h2">No Results found!</p>
+                    <center><img src="~/assets/img/stick.gif" /></center>
+                    
+                }
+
                 @foreach (var post in Model)
                 {
 
@@ -57,7 +85,7 @@
                     
                     <div class="panel panel-primary">
                         <div class="panel-body">
-                            <h1 class="post-title-size">@post.Title</h1>
+                            <h1 class="post-title-size"> @Html.ActionLink(post.Title, "Details", new { @post.Id })</h1>
                             <div class="row">
                                 <div class="col-md-6">
 
@@ -78,7 +106,7 @@
                                 <div class="col-lg-10 col-md-9 col-sm-4">
                                     <i class="fa fa-clock-o"> @post.CreationDate</i>
 
-
+                                   
                                     <i class="fa fa-user"> </i>A Yang
                                 </div>
                                 <div class="col-lg-2 col-md-3 col-sm-4">
@@ -88,7 +116,11 @@
                                     @if (post.UpdateDate != null)
                                     {
                                         <i>Update: @post.UpdateDate</i>
+                                        
                                     }
+
+                                    <i>@post.Comments.Count Comments</i>
+
                                 </div>
                                 <div class="col-md-2 pull-right">
                                     @if (User.IsInRole("Admin"))
@@ -101,6 +133,8 @@
 
                             </div>
                             <div class="row">
+                               
+
                                 <div class="col-md-2 pull-right">
                                     @if (User.IsInRole("Admin"))
                                     {
@@ -116,61 +150,11 @@
 
             </article> <!-- post -->
 
-        </div><!--close col-md-9-->
-        <div class="col-md-3">
-            <aside class="sidebar">
-               @using (Html.BeginForm("Index", "Posts", FormMethod.Get))
-               {
-                
-                     @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Search Blog", Style = "background: white; border: 1px solid blue; border-radius: 5px; box-shadow: 0 0 5px 3px blue; color: #666; outline: none;" })
-                  
-                    <input type="submit" value="Search" />
-                
-               }
-
-            <br />
-                <div class="block animated fadeInDown animation-delay-10">
-                    <ul class="nav nav-tabs nav-tabs-ar" id="myTab2">
-
-                        <li class="active">
-                            <a href="#categories" data-toggle="tab"><i class="fa fa-sort-amount-asc"></i></a>
-                        </li>
-                    </ul>
-                    <div class="tab-content">
-
-                        <div class="tab-pane active" id="categories">
-                            <h3 class="post-title no-margin-top">Sorting</h3>
-                            <ul class="simple">
-
-                                <li>
-                                    @Html.ActionLink("All Blog", "Index")
-                                </li>
-                                <li>
-                                    @Html.ActionLink("Ascending Order", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
-                                    <ul>
-                                        <li>
-                                           @Html.ActionLink("Descending Order", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
-                                        </li>
-                                       
-                            </ul>
-                                    </ul>
-                        </div>
-
-
-                    </div> <!-- tab-content -->
-                </div>
-            
-
-
-                </aside> <!-- Sidebar -->
-            </div>
-              
-
+        </div><!--close col-md-12-->
 
             </div><!--end row-->
 
             <div class="container">
-                @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))*@
                 Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
                 @Html.PagedListPager(Model, page => Url.Action("Index",
@@ -181,11 +165,3 @@
 
 
 
-
-@*<script>
-    if(@ViewBag.searchString != null){
-        var word = @ViewBag.searchString;
-        $
-    }
-
-</script>*@

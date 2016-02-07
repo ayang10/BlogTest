@@ -41,7 +41,7 @@ namespace BlogTest.Controllers
         [Authorize] //this limit users, you need to be logged in
         public ActionResult Create(int id)
         {
-            Comment model = new Comment { PostId = id };
+            Comment model = new Comment { PostId = id};
 
             return View(model);
         }
@@ -63,7 +63,7 @@ namespace BlogTest.Controllers
 
                 comment.AuthorId = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name).Id; //grab the id of the current login user, assign that to the AuthorId
 
-
+               
                 //var user = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
                 //comment.AuthorId = user.Id; //grab the id of the current login user, assign that to the AuthorId
                 //comment.Author = user;
@@ -71,7 +71,7 @@ namespace BlogTest.Controllers
 
                 db.Comments.Add(comment);
                 db.SaveChanges();
-                return RedirectToAction("Details", "Posts", new { id = comment.PostId }); //redirect this create to Posts view Details page.
+                return RedirectToAction("Details", "Posts", new { id = comment.PostId}); //redirect this create to Posts view Details page.
             }
 
             return View(comment);

@@ -246,8 +246,11 @@
     <Content Include="assets\img\back_profile.jpg" />
     <Content Include="assets\img\back_services.jpg" />
     <Content Include="assets\img\back_wrap_commerce.jpg" />
+    <Content Include="assets\img\Blog-blocks2.jpg" />
     <Content Include="assets\img\blog.png" />
     <Content Include="assets\img\blog1.png" />
+    <Content Include="assets\img\blog2.png" />
+    <Content Include="assets\img\blogtip.jpg" />
     <Content Include="assets\img\bx_loader.gif" />
     <Content Include="assets\img\colors\aqua\logo.png" />
     <Content Include="assets\img\colors\aqua\logo50.png" />
@@ -475,6 +478,7 @@
     <Content Include="assets\img\demo\wf3.jpg" />
     <Content Include="assets\img\demo\wf4.jpg" />
     <Content Include="assets\img\favicon.png" />
+    <Content Include="assets\img\header-msmBlog.gif" />
     <Content Include="assets\img\logo50_white.png" />
     <Content Include="assets\img\logo_big_white.png" />
     <Content Include="assets\img\logo_raw.png" />
@@ -483,6 +487,7 @@
     <Content Include="assets\img\plan.jpg" />
     <Content Include="assets\img\preload.gif" />
     <Content Include="assets\img\slide_back.jpg" />
+    <Content Include="assets\img\stick.gif" />
     <Content Include="assets\js\app.js" />
     <Content Include="assets\js\carousels.js" />
     <Content Include="assets\js\coming.js" />
@@ -590,6 +595,7 @@
     <Content Include="Content\zocial-less-gh-pages\css\zocial-regular-webfont.woff" />
     <Content Include="Content\zocial-less-gh-pages\css\zocial.less" />
     <Content Include="Content\zocial-less-gh-pages\README.md" />
+    <Content Include="assets\img\cat.gif-c200" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

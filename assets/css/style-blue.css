@@ -4688,11 +4688,17 @@ input.input-lg[type="text"] {
   border-bottom: solid 2px #000;
 }
 .post-title-size {
-    color: #0b3568;
+    color: #555;
     font-family: "Muli", "Lato", sans-serif;
-    font-size: 2.4em;
+    font-size: 2.6em;
     margin: 0 0 20px 0;
-    border-bottom: solid 2px #000;
+    border-bottom: solid 2px #333;
+}
+.fontsize{
+    color: #555; 
+    margin: 0;
+    font-size: 2.5em;
+
 }
 .post .post-title a {
   color: #0099da;
@@ -7504,4 +7510,3 @@ Image placeholders: placemi.com
 .changecolor{
     color: #0d509a
 }
-
