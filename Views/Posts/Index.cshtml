@@ -104,8 +104,8 @@
                         <div class="panel-footer">
                             <div class="row">
                                 <div class="col-lg-10 col-md-9 col-sm-4">
-                                    <i class="fa fa-clock-o"> @post.CreationDate</i>
-
+                                    <i class="fa fa-clock-o"> @post.CreationDate.ToLocalTime().ToString("F")</i>
+                                    @*@post.CreationDate.ToLocalTime().ToString("D")*@
                                    
                                     <i class="fa fa-user"> </i>A Yang
                                 </div>
@@ -115,11 +115,10 @@
                                 <div class="col-lg-6 col-md-3 col-sm-4">
                                     @if (post.UpdateDate != null)
                                     {
-                                        <i>Update: @post.UpdateDate</i>
-                                        
+                                        <i>Update: @post.UpdateDate.ToString()</i>
+                                       
                                     }
-
-                                    <i>@post.Comments.Count Comments</i>
+                                     <i>@post.Comments.Count Comments</i>
 
                                 </div>
                                 <div class="col-md-2 pull-right">

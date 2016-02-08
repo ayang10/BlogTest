@@ -49,10 +49,11 @@ namespace BlogTest
             //app.UseMicrosoftAccountAuthentication(
             //    clientId: "",
             //    clientSecret: "");
+            
 
             app.UseTwitterAuthentication(
-               consumerKey: "	7O4y2rnc2mrI4PtAdCGKw7G2C",
-               consumerSecret: "VzhtrXxSiYnQC9ztMnGOZeSe6mSLPjBgre0VZZTDDXbYKXBTTC");
+               consumerKey: "Y0FcMILt1llKTKuL6W2BApj4v",
+               consumerSecret: "Fh3JB1gIXfw0nvBdoum0mrt5kSPSIPvJ8qCWU4dZlf72SUu3Cu");
             
               app.UseFacebookAuthentication(
               appId: "1785909641622493",

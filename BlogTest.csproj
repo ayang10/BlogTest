@@ -244,6 +244,7 @@
     <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="assets\fonts\socialglyphs-webfont.svg" />
     <Content Include="assets\img\anonymous.png" />
+    <Content Include="assets\img\AyangLogo.png" />
     <Content Include="assets\img\back.jpg" />
     <Content Include="assets\img\back.png" />
     <Content Include="assets\img\back_lead.jpg" />
@@ -260,12 +261,19 @@
     <Content Include="assets\img\back_profile.jpg" />
     <Content Include="assets\img\back_services.jpg" />
     <Content Include="assets\img\back_wrap_commerce.jpg" />
+    <Content Include="assets\img\bamboo.jpg" />
+    <Content Include="assets\img\bgimg.jpg" />
+    <Content Include="assets\img\blackwhite.jpg" />
+    <Content Include="assets\img\blank.png" />
     <Content Include="assets\img\Blog-blocks2.jpg" />
     <Content Include="assets\img\blog.png" />
     <Content Include="assets\img\blog1.png" />
     <Content Include="assets\img\blog2.png" />
     <Content Include="assets\img\blogtip.jpg" />
+    <Content Include="assets\img\buiness.jpg" />
     <Content Include="assets\img\bx_loader.gif" />
+    <Content Include="assets\img\calculator-512.png" />
+    <Content Include="assets\img\carfinder.png" />
     <Content Include="assets\img\colors\aqua\logo.png" />
     <Content Include="assets\img\colors\aqua\logo50.png" />
     <Content Include="assets\img\colors\aqua\logo_big.png" />
@@ -343,7 +351,9 @@
     <Content Include="assets\img\colors\yellow\logo50.png" />
     <Content Include="assets\img\colors\yellow\logo_big.png" />
     <Content Include="assets\img\coming_back.jpg" />
+    <Content Include="assets\img\contacts.gif" />
     <Content Include="assets\img\controls.png" />
+    <Content Include="assets\img\coolbackground.jpg" />
     <Content Include="assets\img\demo\1.jpg" />
     <Content Include="assets\img\demo\2.jpg" />
     <Content Include="assets\img\demo\3.jpg" />
@@ -491,17 +501,36 @@
     <Content Include="assets\img\demo\wf2.jpg" />
     <Content Include="assets\img\demo\wf3.jpg" />
     <Content Include="assets\img\demo\wf4.jpg" />
+    <Content Include="assets\img\dice.jpg" />
+    <Content Include="assets\img\facebook.png" />
+    <Content Include="assets\img\factorial.jpg" />
     <Content Include="assets\img\favicon.png" />
+    <Content Include="assets\img\fizzbuzz.jpg" />
+    <Content Include="assets\img\fk.jpg" />
+    <Content Include="assets\img\gray.png" />
+    <Content Include="assets\img\happy.gif" />
     <Content Include="assets\img\header-msmBlog.gif" />
+    <Content Include="assets\img\hello.jpg" />
+    <Content Include="assets\img\initial.jpg" />
+    <Content Include="assets\img\insta.png" />
+    <Content Include="assets\img\instagram.png" />
+    <Content Include="assets\img\javascriptIcon.png" />
+    <Content Include="assets\img\js.png" />
+    <Content Include="assets\img\link.png" />
+    <Content Include="assets\img\loading.gif" />
     <Content Include="assets\img\logo50_white.png" />
     <Content Include="assets\img\logo_big_white.png" />
     <Content Include="assets\img\logo_raw.png" />
     <Content Include="assets\img\logo_raw_white.png" />
     <Content Include="assets\img\logo_white.png" />
+    <Content Include="assets\img\me.PNG" />
+    <Content Include="assets\img\palindrome.jpg" />
+    <Content Include="assets\img\peace.png" />
     <Content Include="assets\img\plan.jpg" />
     <Content Include="assets\img\preload.gif" />
     <Content Include="assets\img\slide_back.jpg" />
     <Content Include="assets\img\stick.gif" />
+    <Content Include="assets\img\white_texture.jpg" />
     <Content Include="assets\js\app.js" />
     <Content Include="assets\js\carousels.js" />
     <Content Include="assets\js\coming.js" />
@@ -565,6 +594,24 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\angularjs.png" />
+    <Content Include="img\api.png" />
+    <Content Include="img\AyangLogo.png" />
+    <Content Include="img\bamboo.jpg" />
+    <Content Include="img\blackwhite.jpg" />
+    <Content Include="img\bmw.jpg" />
+    <Content Include="img\buiness.jpg" />
+    <Content Include="img\carfinder.png" />
+    <Content Include="img\contacts.gif" />
+    <Content Include="img\dice.jpg" />
+    <Content Include="img\exotic.png" />
+    <Content Include="img\gray.png" />
+    <Content Include="img\happy.gif" />
+    <Content Include="img\lambo.png" />
+    <Content Include="img\life.png" />
+    <Content Include="img\ninja.png" />
+    <Content Include="img\panda.jpg" />
+    <Content Include="img\welcome.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="assets\css\leadpage.css.map" />
@@ -610,6 +657,7 @@
     <Content Include="Content\zocial-less-gh-pages\css\zocial.less" />
     <Content Include="Content\zocial-less-gh-pages\README.md" />
     <Content Include="assets\img\cat.gif-c200" />
+    <Content Include="assets\img\panda.gif-c200" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -691,7 +739,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="img\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

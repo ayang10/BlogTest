@@ -107,7 +107,14 @@ namespace BlogTest.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Create( Post post, HttpPostedFileBase fileUpload) 
         {
-            post.CreationDate = new DateTimeOffset(DateTime.Now);
+            //post.CreationDate = new DateTimeOffset(DateTime.Now);
+
+            DateTime timeUtc = DateTime.UtcNow;
+            TimeZoneInfo kstZone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
+            DateTime kstTime = TimeZoneInfo.ConvertTimeFromUtc(timeUtc, kstZone);
+
+            post.CreationDate = kstTime;
+
             if (ModelState.IsValid)
             {
                 // restricting the valid file formats to images only
@@ -118,9 +125,10 @@ namespace BlogTest.Controllers
                     post.MediaUrl = "~/img/" + fileName;
 
                 }
-                
 
-                post.CreationDate = new DateTimeOffset(DateTime.Now);
+                //post.CreationDate = new DateTimeOffset(DateTime.Now);
+                post.CreationDate = kstTime;
+
                 db.Posts.Add(post); //add the object
                 db.SaveChanges(); //creates a sql statement and sends it out
                 return RedirectToAction("Index");
@@ -156,9 +164,14 @@ namespace BlogTest.Controllers
         public ActionResult Edit(Post post, HttpPostedFileBase fileUpload)
         {
 
-            post.UpdateDate = new DateTimeOffset(DateTime.Now);
-            
-            
+            //post.UpdateDate = new DateTimeOffset(DateTime.Now);
+            DateTime timeUtc = DateTime.UtcNow;
+            TimeZoneInfo kstZone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
+            DateTime kstTime = TimeZoneInfo.ConvertTimeFromUtc(timeUtc, kstZone);
+
+            post.UpdateDate = kstTime;
+
+
             if (ModelState.IsValid)
             {
                 var fetched = db.Posts.Find(post.Id);
@@ -177,7 +190,8 @@ namespace BlogTest.Controllers
 
                 }
 
-                post.UpdateDate = new DateTimeOffset(DateTime.Now);
+                //post.UpdateDate = new DateTimeOffset(DateTime.Now);
+                post.UpdateDate = kstTime;
                 db.Entry(fetched).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -32,9 +32,10 @@
                 @Html.LabelFor(model => model.MediaUrl, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.HiddenFor(model => model.MediaUrl)
-                    <input name="fileUpload" type="file" id="fileUpload" />
 
+                    <input name="fileUpload" type="file" id="fileUpload" />
                     @Html.ValidationMessageFor(model => model.MediaUrl, "", new { @class = "text-danger" })
+                    
                 </div>
             </div>
             <div class="form-group">

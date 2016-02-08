@@ -54,13 +54,18 @@ namespace BlogTest.Controllers
         [Authorize]
         public ActionResult Create([Bind(Include = "Id,PostId,AuthorId,EditorId,Body,Created,Updated,ParentCommentId,MarkForDeletion")] Comment comment)
         {
-            comment.Created = new DateTimeOffset(DateTime.Now);
+            //comment.Created = new DateTimeOffset(DateTime.Now);
+            DateTime timeUtc = DateTime.UtcNow;
+            TimeZoneInfo kstZone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
+            DateTime kstTime = TimeZoneInfo.ConvertTimeFromUtc(timeUtc, kstZone);
+
+            comment.Created = kstTime;
 
             if (ModelState.IsValid)
             {
 
-                comment.Created = new DateTimeOffset(DateTime.Now);
-
+                //comment.Created = new DateTimeOffset(DateTime.Now);
+                comment.Created = kstTime;
                 comment.AuthorId = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name).Id; //grab the id of the current login user, assign that to the AuthorId
 
                
