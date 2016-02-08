@@ -71,3 +71,9 @@ C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\Paged
 C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\PagedList.dll
 C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\PagedList.xml
 C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\obj\Debug\BlogTest.csprojResolveAssemblyReference.cache
+C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\System.Net.Http.Formatting.dll
+C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\System.Web.Http.dll
+C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\System.Web.Http.WebHost.dll
+C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\System.Net.Http.Formatting.xml
+C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\System.Web.Http.xml
+C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\System.Web.Http.WebHost.xml
