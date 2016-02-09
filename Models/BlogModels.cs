@@ -34,7 +34,7 @@ namespace BlogTest.Models
         //joined table //add virtual for lazy loading
         public virtual ICollection<Comment> Comments { get; set; }
 
-        private int BodyTextLimit = 300;
+        private int BodyTextLimit = 900;
 
 
         public string BodyTextTrimmed

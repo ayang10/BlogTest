@@ -55,10 +55,10 @@
             }
         </div>
         <div class="col-md-2 pull-right">
-            @Html.ActionLink("Ascending Order", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Ascending Order", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter }, new { @class = "btn btn-info" })
         </div>
         <div class="col-md-3 pull-right ">
-            @Html.ActionLink("All Blog", "Index")
+            @Html.ActionLink("All Blog", "Index", null,  new { @class = "btn btn-info" })
         </div>
     </div>
 </div>
@@ -110,7 +110,7 @@
                                     <i class="fa fa-user"> </i>A Yang
                                 </div>
                                 <div class="col-lg-2 col-md-3 col-sm-4">
-                                    <a href="#" class="pull-right">@Html.ActionLink("Read more", "Details", new { @post.Id }) &raquo;</a>
+                                    <a href="#" class="pull-right">@Html.ActionLink("Read more", "Details", new { @post.Id }, new { @class = "btn btn-primary" }) </a>
                                 </div>
                                 <div class="col-lg-6 col-md-3 col-sm-4">
                                     @if (post.UpdateDate != null)
@@ -125,7 +125,7 @@
                                     @if (User.IsInRole("Admin"))
                                     {
                                         <p>
-                                            @Html.ActionLink("Delete Post", "Delete", new { @post.Id }) &raquo;
+                                            @Html.ActionLink("Delete Post", "Delete", new { @post.Id }, new { @class = "btn btn-danger" })
                                         </p>
                                     }
                                 </div>
@@ -138,7 +138,7 @@
                                     @if (User.IsInRole("Admin"))
                                     {
                                         <p>
-                                            @Html.ActionLink("Edit", "Edit", new { @post.Id }) &raquo;
+                                            @Html.ActionLink("Edit", "Edit", new { @post.Id }, new { @class = "btn btn-success" }) 
                                         </p>
                                     }
                                 </div>

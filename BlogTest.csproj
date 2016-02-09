@@ -594,6 +594,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\accomplishments.jpg" />
     <Content Include="img\angularjs.png" />
     <Content Include="img\api.png" />
     <Content Include="img\AyangLogo.png" />
@@ -605,6 +606,9 @@
     <Content Include="img\contacts.gif" />
     <Content Include="img\dice.jpg" />
     <Content Include="img\exotic.png" />
+    <Content Include="img\giphy.gif" />
+    <Content Include="img\Goku-2.gif" />
+    <Content Include="img\goten-and-trunks-fusion-to-gotenks.gif" />
     <Content Include="img\gray.png" />
     <Content Include="img\happy.gif" />
     <Content Include="img\lambo.png" />
