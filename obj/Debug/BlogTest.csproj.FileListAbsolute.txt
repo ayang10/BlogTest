@@ -76,3 +76,4 @@ C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\Syste
 C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\System.Net.Http.Formatting.xml
 C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\System.Web.Http.xml
 C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\bin\System.Web.Http.WebHost.xml
+C:\Users\ADMIN\Documents\Visual Studio 2015\Projects\BlogTest\BlogTest\obj\Debug\BlogTest.csprojResolveAssemblyReference.cache

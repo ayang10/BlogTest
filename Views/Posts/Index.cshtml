@@ -8,19 +8,7 @@
 
 }
 
-<br />
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <center>
-                <img src="~/assets/img/header-msmBlog.gif" class="thumbnail" alt="" width="500" height="200" />
-            </center>
-        </div>
-
-    </div>
-</div>
-
-
+<div class="divide80"></div>
 @if (User.IsInRole("Admin"))
 {
     <div class="container">
@@ -30,14 +18,7 @@
                     @Html.ActionLink("Create New", "Create")
                 </p>
             </div>
-            <div class="col-md-9">
-                <ol class="breadcrumb pull-right">
-                    <li class="active">
-                        Blog
-                    </li>
-                </ol>
-
-            </div>
+           
         </div>
     </div>
 }
@@ -116,7 +97,7 @@
                                     @if (post.UpdateDate != null)
                                     {
                                         <i>Update: @post.UpdateDate.ToString()</i>
-                                       
+                                      
                                     }
                                      <i>@post.Comments.Count Comments</i>
 
